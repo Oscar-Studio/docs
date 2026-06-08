@@ -1,0 +1,76 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: #191919;
+  border: 1px solid #212327;
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+  height: 100%;
+}
+
+.card:hover {
+  border-color: #363a3f;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.title:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.description {
+  color: #dadbdf;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7d8187;
+  padding: 2px 8px;
+  border: 1px solid #212327;
+  border-radius: 9999px;
+}
+
+.liveLink {
+  font-size: 13px;
+  color: #7d8187;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.liveLink:hover {
+  color: #ffffff;
+}

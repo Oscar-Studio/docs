@@ -1,0 +1,57 @@
+---
+title: 2048
+description: 经典滑动合并数字游戏，相同数字相加，挑战 2048
+sidebar_position: 1
+tags: [益智游戏, 数字]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">PUZZLE GAME / 数字</div>
+
+# 2048
+
+经典滑动合并数字游戏——相同数字相撞会合并成它们的和，每次移动后随机生成一个 **2** 或 **4**，目标：拼出 **2048**！
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/2048/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/oscarstudio/games/tree/main/2048">View source</PillButton>
+</div>
+
+## 玩法说明
+
+- **方向键** 或 **滑动屏幕** 移动所有数字方块
+- 相同数字相撞会合并成它们的和
+- 每次移动后随机生成一个 **2** 或 **4**
+- 目标：拼出 **2048**！
+
+## 特点
+
+- 简洁优雅的视觉设计
+- 流畅的滑动动画
+- 分数记录与本地存储
+- 随时重新开始
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 上移 | `↑` 或 `W` | 手指上滑 |
+| 下移 | `↓` 或 `S` | 手指下滑 |
+| 左移 | `←` 或 `A` | 手指左滑 |
+| 右移 | `→` 或 `D` | 手指右滑 |
+| 重新开始 | 按钮 | 按钮 |
+
+## 进阶技巧
+
+- **保持最大数字在角落** — 固定一个角落（如左下）累积最大数字
+- **避免过早填满棋盘** — 合并比新增更重要
+- **观察下一格** — 提前规划下一格可放置的位置
+- **链式合并** — 一次移动触发多次合并可获得更高分数
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **流畅动画** — CSS `transform` + `transition` 实现方块移动与合并
+- **本地存储** — 最高分持久化在 `localStorage`
+- **响应式** — 桌面与移动端统一体验，触屏滑动支持
