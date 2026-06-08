@@ -11,10 +11,12 @@ const config: Config = {
     v4: true,
   },
 
+  trailingSlash: false,
+
   url: 'https://docs.oscarstudio.cn',
   baseUrl: '/',
 
-  organizationName: 'oscarstudio',
+  organizationName: 'Oscar-Studio',
   projectName: 'docs',
 
   onBrokenLinks: 'throw',
