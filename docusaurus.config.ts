@@ -74,6 +74,12 @@ const config: Config = {
     },
     navbar: {
       title: 'Oscar Studio',
+      logo: {
+        alt: 'Oscar Studio',
+        src: 'img/logo.png',
+        srcDark: 'img/logo.png',
+        height: 32,
+      },
       hideOnScroll: false,
       items: [
         {
