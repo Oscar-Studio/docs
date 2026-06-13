@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Oscar Studio',
   tagline: '教学工具 / 益智游戏 / AI',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
 
   future: {
     v4: true,
