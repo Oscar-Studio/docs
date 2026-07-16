@@ -7,15 +7,56 @@ tags: ["计时", "秒表"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 通用</div>
 
 # 计时器
 
-秒表功能，记录单圈时间
+高精度秒表——从 `00:00:00` 开始计时，支持单圈（计次）记录，精度达 10 毫秒。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/计时器/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/计时器/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/计时器">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **高精度** — `setInterval(10ms)` 刷新显示，精度达 0.01 秒
+- **时:分:秒** — 显示格式 `HH:MM:SS`，可记录超过 1 小时的任务
+- **计次记录** — 每次点「计次」记录当前累计时间，可记录多次
+- **运行提示** — 计时中数字有 1 秒呼吸动画
+- **暂停 / 继续** — 暂停后可继续累计，不会清零
+- **重置清空** — 一键清零时间并清空所有计次记录
+
+## 使用步骤
+
+1. 打开页面，默认显示 `00:00:00`
+2. 点「开始」开始计时，再次点「停止」暂停
+3. 计时中可点「计次」记录当前时刻，多次记录会倒序显示在下方
+4. 点「重置」清空时间与计次
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| `Space` | 开始 / 停止切换 |
+| `L` | 计次（记录当前时刻） |
+| `R` | 重置 |
+
+## 与「课堂倒计时器」的区别
+
+| 工具 | 方向 | 典型用途 |
+|---|---|---|
+| **计时器**（本页） | 向上计时（秒表） | 测量已用时长、单圈成绩 |
+| **课堂倒计时器** | 向下倒计时 | 限时答题、讨论控制 |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，单文件可运行
+- **时间基准** — 使用 `Date.now()` 差值计算，避免 `setInterval` 漂移
+- **CSS 动画** — `@keyframes pulse` 实现运行中的呼吸效果
+
+## 适用场景
+
+- 体育课跑步 / 游泳计时
+- 课堂活动计时
+- 单圈或多轮次成绩记录

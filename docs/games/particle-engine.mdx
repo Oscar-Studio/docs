@@ -7,15 +7,92 @@ tags: [粒子, 模拟, 可视化]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 粒子 · 模拟 · 可视化</div>
 
 # 粒子引擎
 
-粒子效果游乐场，实时调节发射器参数观察不同粒子系统行为。
+**等离子态交互界面**——网页游戏集首页的"粒子态"模式。整张首页由数千颗粒子组成，标题 `益智游戏集` 与 `Explore` 按钮都是粒子汇聚成的文字。点击 `Explore` 后，粒子**爆散重组为游戏卡片**；点击卡片，粒子**环绕形成光环**并弹出游戏入口。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/particle-engine/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/games/tree/main/particle-engine">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/particle-engine/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/particle-engine">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 进入首页，默认是普通 UI 模式（HTML 卡片列表）
+- 切换到 **Plasma 质量模式**即进入粒子态：
+  - 屏幕显示由粒子汇聚的 `益智游戏集` 标题与 `Explore` 椭圆按钮
+  - 鼠标悬停 `Explore` 时画布光标变 pointer
+  - 点击 `Explore` 触发"粒子爆散"动效，hero 文字向外飞散
+  - 粒子**重新聚拢**为 9 个游戏卡片（每卡约 310 颗）
+  - 多余的粒子组成**环绕屏幕边缘的光环**
+- 点击任意卡片：
+  - 被选中的卡片粒子**先扩散为彩色光环**
+  - 其他卡片粒子**向外飞散**
+  - 弹出游戏详情 Modal，含**进入演示**按钮
+
+## 核心模块
+
+源码分为两个 JS 文件：
+
+### `particle-core.js` — 粒子核心引擎
+
+- **`Particle` 类** — 单颗粒子，属性含位置/速度/尺寸/温度/寿命/颜色/透明度/摩擦/重力/吸引/环绕/聚集
+- **`ParticlePool` 类** — 粒子对象池，预分配 3000 颗，循环复用减少 GC 压力
+- **`ParticleSystem` 类** — 完整粒子系统，支持：
+  - `emit(x, y, count, config)` — 扇形发射
+  - `emitExplosion(x, y, config)` — 爆炸 + 火花
+  - `emitText(text, x, y, config)` — 文字形状粒子（通过离屏 canvas 像素扫描）
+  - `attractToPoint(x, y, strength)` — 吸引到点
+  - `repelFromPoint(x, y, strength, radius)` — 排斥力场
+  - `addForce({ type: 'wind' })` — 风力等持续力
+
+### `particle-ui.js` — 等离子态界面集成
+
+- **`ParticleUI` 类** — 完整的 UI 状态机，状态流转：
+  - `hero`（标题粒子态）
+  - `transitioning`（爆散中）
+  - `cards`（卡片粒子态）
+  - `modal-opening`（打开弹窗中）
+  - `modal`（弹窗已打开）
+- 从 `tools-config.json` 动态加载游戏数据
+- 处理点击、悬停、Modal 弹出/关闭等所有交互
+
+## 特点
+
+- **3000 颗粒子**池化复用，60fps 流畅运行
+- **温度系统**——粒子温度影响大小、颜色（橙→黄→青→白）与发光强度
+- **环绕运动**——粒子可设置轨道中心、半径、角速度形成光环
+- **吸引/排斥力场**——支持持续力与瞬时吸引
+- **3D 翻转**——所有变换通过 `requestAnimationFrame` 驱动
+- **抗 path traversal**——Modal 跳转 URL 严格白名单验证
+- **完整状态机**——5 个状态切换、动画时序精确控制
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 切换质量模式 | 顶部 `plasma` 单选 | 手指点击 |
+| 进入卡片视图 | 点击 `Explore` 粒子按钮 | 手指点击 |
+| 选择游戏 | 点击粒子卡片 | 手指点击 |
+| 关闭弹窗 | 点击 `×` 或弹窗外 | 手指点击 |
+| 暂停 / 销毁 | 切换回其他质量模式 | 同上 |
+
+## 适用场景
+
+- **网页粒子态界面**——把整张首页设计为由粒子构成的可交互艺术
+- **粒子参数研究**——3000 颗粒子的实时表现
+- **文字粒子化**——任意文字都可以转换为粒子阵
+- **粒子游戏原型**——发射/吸引/排斥/环绕/聚集/爆散等基础原语完整
+
+## 技术实现
+
+- **两文件分层** — `particle-core.js`（引擎 + 类） + `particle-ui.js`（UI 集成 + 状态机）
+- **对象池** — `ParticlePool` 预分配 3000 颗粒子，循环复用，零运行时分配
+- **requestAnimationFrame** — 每帧调用 `update + render`，自动暂停
+- **离屏 canvas 像素扫描** — `emitText` 读取 `<canvas>` 像素透明度生成粒子位置
+- **Hue 颜色映射** — 一维规则使用 `hsl((i / length) * 360, ...)` 着色
+- **状态机** — 5 个 UI 状态，setTimeout 链式控制时序
+- **DOM 构造** — Modal 元素全部用 `document.createElement` 而非 innerHTML，杜绝 XSS
+- **响应式** — Canvas 自动跟随 `window.innerWidth/Height`

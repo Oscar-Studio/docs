@@ -7,15 +7,51 @@ tags: ["生物", "实验", "教学"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 生物</div>
 
 # 保护色实验
 
-模拟生物保护色实验，点击你看到的纸片进行自然选择，观看复式折线统计图了解种群变化
+在一块纯色背景上撒下不同颜色的小纸片，每轮你扮演「捕食者」**点击看到的纸片**——当某色纸片数量降到初始的 25% 以下即触发繁殖（×4）。多轮过后，**复式折线图**直观呈现不同色种群在自然选择下的此消彼长。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/camouflage/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/camouflage/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/camouflage">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **可调参数** — 颜色种类、纸片总数（4 的倍数）、实验轮数、背景颜色
+- **背景对比** — 系统根据「与背景色色距」自动调亮 / 调暗纸片，保证可见性
+- **自然选择模拟** — 每轮点击淘汰，剩余 ≤25% 时该轮结束并触发繁殖（每张存活 ×3）
+- **折线统计图** — 实验结束后在 Canvas 上绘制各色数量随轮次变化
+- **超时兜底** — 每张纸片 1.5 秒寿命，超时未点也视作一次淘汰，避免卡死
+
+## 使用步骤
+
+1. 设置颜色种类、纸片总数、轮数，并从调色板**点选一个背景色**
+2. 点击 **开始实验**，纸片按颜色均匀铺满游戏区
+3. 在 1.5 秒倒计时内**点击你看到的纸片**——和背景差异越小越难发现
+4. 数量降至 25% 以下时，本轮结束，存活个体各繁殖 3 倍，进入下一轮
+5. 全部轮次结束后查看**复式折线图**，了解每种颜色的种群变化趋势
+
+## 阈值规则
+
+| 条件 | 行为 |
+|---|---|
+| 剩余 ≤ 25% 初始数量 | 触发繁殖，进入下一轮 |
+| 剩余 = 0 | 本色种群灭绝 |
+| 1.5 秒未点 | 随机淘汰一张 |
+| 到达设定轮数 | 结束并显示统计图 |
+
+## 技术实现
+
+- **颜色生成** — 候选调色板 15 色，按设置数量随机抽取，并对接近背景色的卡片做色距矫正
+- **繁殖** — 每张存活者产生 3 个同色后代，随机坐标避免重叠
+- **Canvas 图表** — 高 DPI 适配（`devicePixelRatio`），含网格、坐标轴、图例
+- **动画** — CSS `@keyframes replicateFlash` 给繁殖瞬间的纸片加闪烁反馈
+
+## 适用场景
+
+- 生物课「自然选择与保护色」章节的课堂演示
+- 学生分组探究不同背景色对种群演化的影响
+- 解释「与环境色相近的个体更易存活」的直观教具

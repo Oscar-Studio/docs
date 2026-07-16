@@ -7,15 +7,65 @@ tags: ["动画", "图像"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 数学</div>
 
 # PolygonBloom
 
-观察多边形边数随时间指数级增长的过程。每秒钟边数乘以倍数。
+**从三角形到圆的旅程**——多边形边数随时间指数级增长的可视化动画：每秒钟边数乘以你设定的倍数，亲眼看见正多边形从三角形"绽放"为圆。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/PolygonBloom/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/PolygonBloom/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/PolygonBloom">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **指数级增长** — 每秒边数 `n = ⌈n × multiplier⌉`
+- **倍数可调** — 默认 `2`，最低 `1.01`，体验不同"绽放"速度
+- **实时边数显示** — 超过 1000 自动千分位分隔
+- **暂停 / 继续** — 任意时刻冻结观察中间状态
+- **一键重置** — 回到初始正三角形
+- **响应式画布** — 自适应容器大小
+- **居中绘制** — 多边形始终保持在画布中心
+
+## 使用步骤
+
+1. 打开页面，默认倍数 `2`，从正三角形（3 边）开始
+2. 调整**倍数**输入框（建议范围 1.1 ~ 2）
+3. 点击"开始"按钮开始动画（页面打开即开始）
+4. 观察边数与图形轮廓变化
+5. 点击"暂停"冻结当前状态，点击"重置"回到三角形
+
+## 倍数效果参考
+
+| 倍数 | 感受 |
+|---|---|
+| 1.01 | 极慢，便于观察每一步 |
+| 1.5 | 平稳增长 |
+| 2（默认） | 快速绽放 |
+| 3+ | 几乎瞬间逼近圆 |
+
+## 数学原理
+
+正 `n` 边形内接于同一圆时，每条边对应的圆心角为 `2π / n`。当 `n → ∞` 时：
+
+```
+lim(n→∞) 多边形周长 = 圆的周长
+lim(n→∞) 多边形面积 = 圆的面积
+```
+
+这就是祖暅原理"以直代曲"思想的几何直观。
+
+## 技术实现
+
+- **Canvas 2D** — 实时绘制正多边形
+- **requestAnimationFrame** — 浏览器原生动画循环
+- **时间步进** — 用 `deltaTime` 精确控制 1 秒 1 次增长
+- **响应式** — 监听 `resize` 事件重设画布尺寸
+
+## 适用场景
+
+- 高中数学"极限"概念启蒙
+- 直观理解"以直代曲"
+- 数学可视化与几何美学
+- 课堂引入环节的趣味演示

@@ -7,15 +7,67 @@ tags: ["学习", "益智"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 学习 · 记忆</div>
 
 # 单词翻翻乐
 
-中英文单词记忆匹配游戏
+中英文单词配对记忆游戏——牌面朝下，逐张翻开，**将英文单词与其中文释义配对**，全部配对完成即通关，记录用时。可选择内置词库或导入自定义词库！
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/单词翻翻乐/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/单词翻翻乐/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/单词翻翻乐">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 进入首页点击 **开始游戏** 即可使用默认词库（水果）开玩
+- 牌面朝下，**逐张点击翻开两张**
+- 若翻开的牌是**同一个词的中英文**则配对成功（保持翻开并变灰）
+- 若不匹配则 1 秒后**自动翻回背面**
+- 全部配对完成即通关，显示用时
+
+## 特点
+
+- 内置多个词库（**水果**、**动物**、**电子设备**、**常见水果** 等），可在设置中切换
+- **自定义词库导入** — 支持 JSON / YAML / TXT 三种格式
+- **可调难度** — 自定义一轮的词对数量（2 - 50 对，即 4 - 100 张卡片）
+- 翻转动画（CSS `transform: rotateY` 3D 翻转）
+- 配对成功 / 失败 / 通关多种视觉反馈
+- 计时精确到秒
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 翻开卡片 | 鼠标点击 | 手指点击 |
+| 打开设置 | 右上角齿轮按钮 | 同上 |
+| 选择词库 | 设置面板点击词库项 | 同上 |
+| 导入词库 | 点击虚线框选择文件 | 同上 |
+| 调整词对数 | 设置面板数字输入框 | 同上 |
+| 再来一次 | 通关页面 `再来一次` 按钮 | 同上 |
+| 回到主页 | 通关页面 `回到主页` 按钮 | 同上 |
+
+## 词库格式
+
+内置词库位于 `单词翻翻乐词库/` 目录，支持以下三种自定义格式：
+
+- **JSON** — 数组格式 `[{ "en": "apple", "zh": "苹果" }, ...]`
+- **YAML** — 列表项 `- en: apple` `- zh: 苹果`
+- **TXT** — 每行 `英文 + 空格 + 中文`（例如 `apple 苹果`）
+
+## 进阶技巧
+
+- **空间记忆法** — 翻牌时主动记忆"中文和英文分别在哪个位置"
+- **高频词先记** — 配对几对后，回溯"哪些位置出现频率高"
+- **小词对数入门** — 第一次接触新词库时使用 6-8 对热身
+- **复盘不熟悉的词** — 配对错误的词事后重点记忆
+- **导入个人生词本** — 将课本或考试中遇到的生词整理为 TXT 导入，反复练习
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无构建工具
+- **3D 翻转动画** — CSS `transform: rotateY(180deg)` + `backface-visibility`
+- **多格式词库解析** — 内置 JSON / YAML / TXT 三种解析器
+- **fetch + FileReader** — 远程词库 `fetch` 加载，本地词库 `FileReader` 读取
+- **本地计时** — `setInterval` 精确到秒
+- **响应式** — 移动端自动调整网格为 3 列

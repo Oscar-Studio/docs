@@ -7,15 +7,51 @@ tags: ["语法", "AI"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 语文</div>
 
 # 语文句子成分分析
 
-使用DeepSeek API 分析输入的中文句子的成分
+输入中文句子，AI 调用 DeepSeek V4-flash 即可标出**主语 / 谓语 / 宾语 / 状语 / 补语 / 定语**——比传统手工划分更直观，适合语文课堂讲解与现代汉语句法学习。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/语文句子成分分析/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/语文句子成分分析/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/语文句子成分分析">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **六类成分** — 主语、谓语、宾语、状语、补语、定语 全覆盖
+- **AI 标注** — DeepSeek V4-flash 直接按 `[成分]` 内联标签返回结果
+- **示例引导** — 页面自带示例句 `小明昨天在公园里开心地踢足球。`
+- **清空按钮** — 一键重置输入与结果
+- **登录态** — 需 Oscar Studio 账号，Token 存于 `localStorage` / `cookie`
+
+## 使用步骤
+
+1. 在输入框中输入一句中文
+2. 点击 **分析句子** 按钮
+3. 几秒后下方出现分析结果，成分用方括号标出
+4. 点击 **清空** 可重置
+
+## 输出格式示例
+
+输入：
+
+> 小明昨天在公园里开心地踢足球。
+
+输出：
+
+> 小明（主语）昨天（状语）在公园里（状语）开心地（状语）踢（谓语）足球（宾语）
+
+## 技术实现
+
+- **后端** — `POST https://api.oscarstudio.cn/api/chat`，model = `deepseek-v4-flash`
+- **System Prompt** — 强制 AI 按 `主语[主语]谓语[谓语]宾语[宾语]状语[状语]补语[补语]定语[定语]` 模板输出
+- **温度** — `temperature: 0.3` 保证标注重复稳定
+- **错误处理** — 401/网络/API 错误均以红条提示，可重新提交
+
+## 适用场景
+
+- 语文课讲解长句结构
+- 学生现代汉语作业自查
+- 写作训练时拆解范文成分

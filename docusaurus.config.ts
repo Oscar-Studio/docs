@@ -20,6 +20,9 @@ const config: Config = {
   projectName: 'docs',
 
   onBrokenLinks: 'throw',
+  clientModules: [
+    require.resolve('./src/clientModules/sidebarAccordion.js'),
+  ],
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
@@ -94,7 +97,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/oscarstudio',
+          href: 'https://github.com/Oscar-Studio',
           label: 'GitHub',
           position: 'right',
         },
@@ -115,7 +118,7 @@ const config: Config = {
           title: '站点',
           items: [
             {label: 'Oscar Studio', href: 'https://oscarstudio.cn'},
-            {label: '教学工具', href: 'https://tools.oscarstudio.cn'},
+            {label: '教学工具', href: 'https://edu.oscarstudio.cn'},
             {label: '益智游戏', href: 'https://games.oscarstudio.cn'},
             {label: 'AI Studio', href: 'https://ai.oscarstudio.cn'},
           ],

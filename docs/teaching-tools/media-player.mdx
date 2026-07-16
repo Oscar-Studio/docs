@@ -7,15 +7,90 @@ tags: ["播放器", "音视频", "多媒体"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 多媒体</div>
 
 # 媒体播放器
 
-支持多种音视频格式播放，倍速、单曲循环、列表循环、随机播放、全屏等功能
+网页端通用媒体播放器，同时支持 **音频和视频** 播放。内置倍速（0.5x–3.0x）、单曲循环、列表循环、随机播放、网页全屏 / 浏览器全屏、播放列表管理等完整功能。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/media-player/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/media-player/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/media-player">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **音视频双模** — 视频使用原生 `<video>` 渲染，音频切换为带封面的独立控制面板
+- **多格式支持** — MP4、WebM、Ogg、MP3、WAV、AAC、FLAC、MKV 等浏览器原生支持的格式
+- **9 档倍速** — `0.5x` / `0.75x` / `1x` / `1.25x` / `1.5x` / `1.75x` / `2x` / `2.5x` / `3x`
+- **三种播放模式** — 单曲循环、列表循环、随机播放（可叠加或互斥切换）
+- **双全屏模式** — 浏览器原生全屏 + 网页全屏（theater mode）两种沉浸模式
+- **进度条拖动** — 实时显示已缓冲区域，可点击任意位置跳转
+- **音量控制** — 0–100 滑块调节，3 档音量图标（高 / 低 / 静音）随音量变化
+- **播放列表** — 分 "Oscar 严选" 和 "我的列表" 两段，支持添加、删除、清空
+- **拖拽上传** — 直接将本地音视频文件拖入页面即可加入播放列表
+- **自动播放下一首** — 播放结束自动切到下一曲（可与循环 / 随机模式联动）
+- **加载指示** — 缓冲期间显示 loading 动画，结束自动隐藏
+
+## 使用步骤
+
+1. 打开页面，默认加载 "Oscar 严选" 列表中的样例音频
+2. 点击 "**添加文件**" 按钮或直接将媒体文件 **拖入** 页面底部的虚线框
+3. 视频在主区域直接播放；音频切换到独立控制面板（带音乐图标占位）
+4. 点击列表项切换播放源；点击右侧 "×" 删除单首
+5. 通过顶部控制栏调整 **倍速** / **循环模式** / **随机播放**
+6. 双击视频或点击右下角图标进入全屏；按 `F` 切换浏览器全屏，按右下角第二个图标切换网页全屏
+7. 移动到右下角可看到键盘快捷键提示
+
+## 控件说明
+
+### 视频模式
+
+| 控件 | 作用 |
+|---|---|
+| 进度条 | 点击 / 拖动跳转到指定位置；显示已缓冲区域 |
+| 上一曲 / 下一曲 | 切换播放列表中的上一首 / 下一首 |
+| 播放 / 暂停 | 单击切换；进度超过 3 秒时上一曲键变为重新播放 |
+| 停止 | 暂停并回到 0:00 |
+| 音量滑块 | 实时调节音量；图标随音量档位变化 |
+| 倍速下拉 | 0.5x – 3.0x 共 9 档 |
+| 单曲循环 / 列表循环 | 两个循环模式互斥，开启后按钮高亮 |
+| 随机播放 | 切歌时随机从列表中抽取（不重复当前曲） |
+| 网页全屏 | 切换 theater 模式（占满整个网页区域） |
+| 浏览器全屏 | 调用 `requestFullscreen` 进入系统级全屏 |
+
+### 音频模式
+
+除视频区的控件被独立面板替代外，其余控制（音量 / 倍速 / 循环 / 随机）保持一致。
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| `Space` | 播放 / 暂停 |
+| `←` / `→` | 快退 / 快进 10 秒 |
+| `↑` / `↓` | 音量 +10% / -10% |
+| `M` | 静音 / 取消静音 |
+| `F` | 切换浏览器全屏（非 theater 模式下生效） |
+| `L` | 单曲循环开关 |
+| `R` | 列表循环开关 |
+| `S` | 随机播放开关 |
+
+> 输入框聚焦时快捷键不生效，避免误触。
+
+## 技术实现
+
+- **原生 HTML5 媒体** — 基于 `<video>` 元素统一处理音视频（`isAudio` 标志切换 UI）
+- **Font Awesome** — 使用 `6.4.0` CDN 图标库提供全部按钮图标
+- **Blob URL** — 本地文件通过 `URL.createObjectURL` 转为可播放的临时 URL
+- **XMLHttpRequest** — "Oscar 严选" 列表通过 XHR 加载示例音频并解析时长
+- **拖放 API** — `dragover` / `drop` 事件实现拖入文件即添加
+- **Fullscreen API** — 浏览器原生全屏切换；自定义 `.theater-mode` class 实现网页全屏
+- **响应式** — 窄屏隐藏音量控制与快捷键提示，自适应移动端
+
+## 适用场景
+
+- 课堂音视频播放（教师播放教学视频 / 听力材料）
+- 老师自制 / 学生自制媒体内容本地预览
+- 简单的音视频格式测试与播放
+- 教学片段的循环 / 慢放 / 快放讲解

@@ -7,15 +7,52 @@ tags: ["棋类"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 棋类</div>
 
 # 五子棋
 
-五子棋棋盘
+经典五子棋对弈——15×15 棋盘，黑白双方轮流落子，**横/竖/斜**任意方向连成 5 子即获胜，最后一手会以红圈高亮显示。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/五子棋/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/五子棋/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/五子棋">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- **黑棋先手**——双方轮流在 15×15 棋盘交叉点落子
+- 点击棋盘任意交叉点附近即可落子，自动吸附到最近格点
+- **4 个方向**（横、竖、正斜、反斜）中任意方向先连成 **5 子**即获胜
+- 最后一手落点以**红圈**高亮，便于复盘
+- 胜负判定后弹出"X 棋 获胜!"提示
+
+## 特点
+
+- 15×15 标准棋盘，含 9 个星位（天元 + 八个星）
+- 棋子带径向渐变，呈现立体光泽
+- 自动判断横/竖/斜四向连珠
+- 最后落子红圈标记
+- 重新开始带确认弹窗
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 落子 | 鼠标点击棋盘交叉点 | 手指点击 |
+| 重新开始 | `重新开始` 按钮 | 按钮 |
+
+## 进阶技巧
+
+- **关注对手的"活三"** — 对手下一步就能形成"活四"时必须立即封堵
+- **制造"双三"或"双四"** — 一步形成两个威胁，让对手无法同时防守
+- **先手重视中心** — 黑棋先手尽量向棋盘中心靠拢，扩大后续选择
+- **压对手先手** — 每步都思考"如果对手应对最好的一手，我能怎么走"
+- **残局阶段切忌侥幸** — 五子棋一手即可翻盘，保持警惕
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + Canvas + 原生 JavaScript，无任何依赖
+- **Canvas 渲染** — 棋盘网格、星位、棋子、最后一手标记全部用 Canvas 2D 绘制
+- **棋子渲染** — `createRadialGradient` 实现仿立体光泽效果
+- **胜负判定** — 落子后向四方向各延伸 4 格计数，连续同色 ≥ 5 即获胜
+- **响应式** — 棋盘固定 450×450，自适应桌面与移动端

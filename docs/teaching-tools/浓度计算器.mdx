@@ -7,15 +7,50 @@ tags: ["溶液"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 化学</div>
 
 # 浓度计算器
 
-计算溶液的浓度或需要的质量
+通过原溶液 + 加入溶液的混合，自动计算混合后溶液的质量和浓度——任意修改一个数值，其余数值自动平衡；遇到不想被改写的字段时，**锁形图标**可以把它钉住。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/浓度计算器/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/浓度计算器/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/浓度计算器">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **三栏联动** — 原溶液 A / 加入溶液 B / 混合后 C，质量与浓度两列同时显示
+- **自动平衡** — 修改任一输入，C 行的总质量与浓度按公式即时重算
+- **锁字段** — 点击锁形图标可锁定任意单元格，锁定值不参与自动计算
+- **多场景适用** — 稀释（向浓溶液加水）、浓缩（蒸发溶剂）、混合（两种浓度互兑）
+- **混合按比例** — 在未锁定 A、B 质量时，修改混合后质量会按比例缩放两边
+
+## 使用步骤
+
+1. 在 A、B 区域填入原溶液与加入溶液的质量（g）和浓度（%）
+2. 调整任意数值，C 行的 `混合后` 数值会实时更新
+3. 想固定某个字段不被改写？点击其右侧的 🔓 锁形图标即可
+4. 改变 C 行的总质量（未锁定时）会按比例分配 A、B；改变 C 行浓度则会反算配比
+
+## 核心公式
+
+| 关系 | 公式 |
+|---|---|
+| 质量守恒 | `mA + mB = mC` |
+| 溶质守恒 | `mA × cA + mB × cB = mC × cC` |
+| 浓度反推 | 锁定 mC 时，调整 mA → `mB = mC − mA` |
+| 比例反推 | 调整 cC 时，`mA = mC × (cC − cB) / (cA − cB)` |
+
+## 技术实现
+
+- **纯静态** — 单文件 `index.html`，无任何外部依赖
+- **原生 JS** — 监听 `input` 事件，根据触发字段与锁状态路由到不同求解分支
+- **单位** — 质量为 `g`、浓度为 `%`，内部计算时统一除以 100
+- **浮点处理** — 输出保留 6 位小数，自动剔除尾随零
+
+## 适用场景
+
+- 化学课演示溶液稀释 / 浓缩 / 混合
+- 配制一定浓度溶液的快速试算
+- 学生作业中验证「混合后浓度」是否正确

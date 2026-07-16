@@ -7,15 +7,51 @@ tags: ["棋类"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 棋类</div>
 
 # 国际象棋
 
-经典国际象棋，支持王车易位、吃过路兵、兵升变等全部规则
+经典国际象棋——白方先手，二人同屏对弈，吃掉对方国王或将死对方即获胜。支持王车易位、吃过路兵、兵升变等全部 FIDE 规则。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/国际象棋/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/国际象棋/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/国际象棋">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- **白方先手**——双方轮流点击己方棋子移动，吃掉对方的王或将死对方即获胜
+- **合法走位自动校验**——点击己方棋子后，绿色圆点表示可走空格，绿色圆圈表示可吃的敌方棋子
+- **将军提示**——当前回合的王处于被攻击状态时，王所在格会显示红色光晕
+- **将死 / 僵局自动判定**——无合法走步且被将时为将死；无合法走步且未被将为僵局（和棋）
+- **吃子记录**——双方在棋盘下方分别显示已吃掉的敌方棋子
+
+## 特点
+
+- 完整 FIDE 规则：含**王车易位**（短易位 / 长易位）、**吃过路兵**、**兵升变**（可选择后/车/象/马）
+- 将军、将死、僵局自动检测
+- Unicode 棋子字符（♔♕♖♗♘♙），无需加载任何图片
+- 双方吃子记录实时显示
+- 重新开始带确认弹窗，防止误操作
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 选中 / 移动 | 鼠标点击 | 手指点击 |
+| 重新开始 | `重新开始` 按钮 | 按钮 |
+
+## 进阶规则
+
+- **王车易位** — 王与车均未移动过、王未被将军、王将要经过与停留的格子均不受攻击时可易位（短易位王向 h 文件车方向移动 2 格，长易位王向 a 文件车方向移动 2 格）
+- **吃过路兵** — 对方兵从起始位前移 2 格时，本方兵可斜进 1 格吃掉它（仅限下一回合）
+- **兵升变** — 任何一方的兵走到底线（对方第 1 横排）时，可选择升变为后/车/象/马中的任意一种
+- **王不可送将** — 任何走步不能让己方王处于被攻击状态
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何外部依赖
+- **单文件** — 整个游戏在单一 `index.html` 中，可离线运行
+- **规则引擎** — 每种棋子独立走法生成器 + 模拟走步后的"是否被将"过滤
+- **Unicode 棋子** — 用 `♔♕♖♗♘♙` 字符渲染，无需图片资源
+- **响应式** — 棋盘自适应屏幕，按钮触摸友好

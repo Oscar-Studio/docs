@@ -7,15 +7,62 @@ tags: ["勾股定理", "图像"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 数学</div>
 
 # 勾股树
 
-显示勾股树
+经典**毕达哥拉斯树**（Pythagoras Tree）分形可视化——基于勾股定理 `a² + b² = c²` 递归生长，通过滑块自由调节**递归深度、锐角、生长速度**。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/勾股树/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/勾股树/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/勾股树">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **递归深度可调** — `1 ~ 30` 层（深度 > 20 时弹窗提示性能开销）
+- **锐角角度可调** — `1° ~ 89°`，观察不同角度下树形变化
+- **生长速度可调** — `1 ~ 1000`，控制每帧渲染层数
+- **动画生长** — 逐层渲染，可随时停止
+- **Web Worker 计算** — 几何计算在后台线程，不阻塞主线程
+- **HSL 渐变着色** — 按递归深度自动从黄绿过渡到青蓝
+
+## 使用步骤
+
+1. 打开页面，默认参数：深度 `10`、角度 `45°`、速度 `200`
+2. 调整三个滑块到目标参数
+3. 点击"开始生长"观看分形树逐层生成
+4. 点击"停止"可中断生长；点击"重置"清空画布
+5. 深度 > 20 时（约 100 万个方块）会弹窗确认是否继续
+
+## 参数说明
+
+| 滑块 | 范围 | 默认值 | 说明 |
+|---|---|---|---|
+| 递归深度 | 1 ~ 30 | 10 | 树的层数，越大越精细但渲染越慢 |
+| 锐角角度 | 1° ~ 89° | 45° | 父方块上分出的锐角，影响树形对称性 |
+| 生长速度 | 1 ~ 1000 | 200 | 每帧渲染的层数，越大越快 |
+
+## 数学原理
+
+以一个正方形为根，斜边上作内接直角三角形，分出两个**子正方形**。每个子正方形再以同样方式递归。两侧子正方形边长为：
+
+```
+L = c · cos(α)
+R = c · sin(α)
+```
+
+其中 `α` 为锐角角度。当 `α = 45°` 时树形对称。
+
+## 技术实现
+
+- **PixiJS 8** — WebGL 硬件加速渲染方块精灵
+- **Web Worker** — 递归计算跑在独立线程，避免主线程卡顿
+- **Blob Worker** — 工具内代码内联生成 Worker，无需额外文件
+- **requestAnimationFrame** — 浏览器原生动画循环
+
+## 适用场景
+
+- 高中数学"勾股定理"几何直观演示
+- 分形几何与递归思想入门
+- 数学可视化与艺术创作

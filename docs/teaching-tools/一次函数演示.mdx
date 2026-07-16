@@ -7,15 +7,61 @@ tags: ["图像", "函数"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 数学</div>
 
 # 一次函数演示
 
-演示一次函数
+交互式函数图像演示工具，支持**一次函数** `y = kx + b` 与**二次函数** `y = ax² + bx + c` 两种模式，通过滑块实时调参观察图像、关键点与判别式的变化。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/一次函数演示/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/一次函数演示/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/一次函数演示">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **双模式切换** — 一次函数 `y = kx + b` 与二次函数 `y = ax² + bx + c` 一键切换
+- **滑块实时调参** — 系数变化即时反映在函数图像与关键点上
+- **关键点高亮** — 一次函数显示斜率、截距、与 x/y 轴交点；二次函数额外显示顶点、对称轴、判别式
+- **二次函数智能分析** — 自动判别 Δ = b² − 4ac，给出实根个数与位置
+- **对称轴可视化** — 二次函数模式下自动绘制对称轴虚线与顶点圆点
+- **一键重置** — 快速回到默认参数
+
+## 使用步骤
+
+1. 打开页面，默认进入**一次函数**模式
+2. 用顶部按钮切换模式：`一次函数  y = kx + b` / `二次函数  y = ax² + bx + c`
+3. 拖动右侧滑块调整 `k` / `b`（一次）或 `a` / `b` / `c`（二次）
+4. 观察左侧 Canvas 图像、函数表达式与关键点卡片实时变化
+5. 点击"重置为默认值"恢复初始参数
+
+## 参数说明
+
+### 一次函数 `y = kx + b`
+
+| 滑块 | 范围 | 步长 | 作用 |
+|---|---|---|---|
+| 斜率 `k` | −3 ~ 3 | 0.1 | 直线倾斜程度，正负决定递增/递减 |
+| 截距 `b` | −5 ~ 5 | 0.1 | 直线与 y 轴交点（`x=0` 时 `y=b`） |
+
+### 二次函数 `y = ax² + bx + c`
+
+| 滑块 | 范围 | 步长 | 作用 |
+|---|---|---|---|
+| 二次项 `a` | −2 ~ 2 | 0.1 | 决定开口方向（`a>0` 向上）与宽窄 |
+| 一次项 `b` | −5 ~ 5 | 0.1 | 影响对称轴位置 `x = −b/(2a)` |
+| 常数项 `c` | −5 ~ 5 | 0.1 | 抛物线与 y 轴交点 `(0, c)` |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript + Canvas 2D，无任何依赖
+- **Canvas 网格** — 自绘坐标系、刻度与函数曲线
+- **实时渲染** — 滑块 `input` 事件触发重绘，零延迟
+- **判别式分析** — 自动计算 `Δ = b² − 4ac` 判断二次函数与 x 轴交点情况
+
+## 适用场景
+
+- 初中数学"一次函数"课堂演示
+- 高中数学"二次函数"图像与性质教学
+- 探究斜率、截距、二次项系数对图像的影响
+- 直观理解判别式与实根个数的关系

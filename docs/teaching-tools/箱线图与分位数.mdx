@@ -7,15 +7,72 @@ tags: ["统计", "图像"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 数学</div>
 
 # 箱线图与分位数
 
-根据输入数据显示9个分位数和箱线图
+多组数据分位数计算与箱线图绘制工具——输入多组数据，自动计算 **9 个分位数**（3% / 5% / 10% / 25% / 50% / 75% / 90% / 95% / 97%），并列展示数据表与可视化箱线图。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/箱线图与分位数/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/箱线图与分位数/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/箱线图与分位数">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **多组数据支持** — 一组数据占一行，可同时对比多组分布
+- **9 个分位数** — 3% / 5% / 10% / 25% / 50% / 75% / 90% / 95% / 97%
+- **数据表展示** — 数据集 × 分位数的二维表格，4 位小数
+- **箱线图绘制** — 显示 Q1、中位数、Q3、上/下须线（3% 与 97% 分位）
+- **混合分隔符** — 支持逗号、空格、制表符、换行
+- **预填示例** — 三组数据可直接体验
+- **错误提示** — 无效数据按组提示具体位置
+
+## 使用步骤
+
+1. 打开页面，默认已填入三组示例数据
+2. 在文本框中按"**一组一行**"的格式编辑数据
+3. 每行内可用逗号 / 空格 / 制表符分隔数值
+4. 点击"计算分位数"按钮
+5. 查看下方数据表与箱线图
+
+## 输入格式示例
+
+```
+10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+5 15 25 35 45 55 65 75 85 95
+1.5, 2.3, 4.7, 8.2, 12.6, 18.9, 25.3
+```
+
+## 计算方法
+
+分位数采用**线性插值法**：
+
+```
+pos = (n − 1) · p
+base = floor(pos)
+rest = pos − base
+Q(p) = x[base] + rest · (x[base+1] − x[base])
+```
+
+## 箱线图元素
+
+| 元素 | 对应分位数 | 颜色 |
+|---|---|---|
+| 箱体下沿 | 25% (Q1) | 蓝色填充 + 青色描边 |
+| 中位线 | 50% (Q2) | 红色 |
+| 箱体上沿 | 75% (Q3) | 蓝色填充 + 青色描边 |
+| 下须线 | 3% | 青色 |
+| 上须线 | 97% | 青色 |
+
+## 技术实现
+
+- **Canvas 2D** — 自绘箱线图与坐标轴
+- **正则分割** — 多种分隔符一次处理
+- **纯静态** — 无任何依赖
+
+## 适用场景
+
+- 高中数学"统计"章节：分位数与箱线图
+- 数据分析课程入门
+- 课堂演示分布形态对比

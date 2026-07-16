@@ -7,15 +7,55 @@ tags: ["数字", "专注"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 数字 · 专注</div>
 
 # 舒尔特方格
 
-练习专注力和对数字敏感程度的舒尔特方格游戏
+训练专注力与数字敏感度的经典工具——屏幕显示一个打乱顺序的 N×N 方格，按 **1 → 2 → 3 → ... → N²** 顺序依次点击，挑战最短用时！
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/舒尔特方格/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/舒尔特方格/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/舒尔特方格">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 进入首页选择**方格大小**（2×2 到 10×10 共 9 档难度）
+- 屏幕显示打乱顺序的数字方格，顶部高亮显示**当前目标数字**
+- 逐一点击 1、2、3 ... 直到点完最后一个数字
+- 用时**精确到毫秒**，并自动保存**各难度最佳记录**到本地
+- 点击错误时数字格会**红色抖动**提示
+
+## 特点
+
+- **9 档难度**（2×2 / 3×3 / 4×4 / 5×5 / 6×6 / 7×7 / 8×8 / 9×9 / 10×10），适合从儿童到成人训练
+- 毫秒级精度计时
+- **本地最佳记录**自动保存（`localStorage`），打破记录弹出 🏆 徽章
+- 响应式布局，方格大小自动适配屏幕
+- 错误点击有视觉抖动反馈
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 选择难度 | 鼠标点击首页卡片 | 手指点击 |
+| 点击数字 | 鼠标点击方格 | 手指点击 |
+| 返回首页 | `返回` 按钮 | 按钮 |
+| 再来一次 | `再来一次` 按钮 | 按钮 |
+
+## 进阶技巧
+
+- **目光中心** — 训练时眼睛盯住方格中心，用**余光**扫描四周数字
+- **指读法** — 在小方格上可心里默念"1 2 3"用手指轻点每个目标格
+- **循序渐进的难度** — 5×5 平均 30 秒以内为合格，5×5 达到 25 秒可挑战 7×7
+- **横向 vs 纵向** — 训练时交替横、纵起始位置，避免形成固定眼动模式
+- **儿童训练** — 5 岁儿童 5×5 约 50-70 秒为佳，训练目标是逐步降低用时
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **Fisher-Yates 洗牌** — 高效生成随机数字序列
+- **毫秒计时** — `performance.now()` + `setInterval` 每 37ms 更新（约 27fps）
+- **本地存储** — `localStorage` 按难度分别保存最佳记录（`schulte_record_{size}`）
+- **响应式** — 根据屏幕宽度自动计算方格尺寸
+- **CSS 动画** — `@keyframes shake` 实现错误抖动效果

@@ -346,7 +346,7 @@ article p:first-of-type {
   background-repeat: no-repeat;
   padding-bottom: 1px;
 }
-.markdown a:hover {
+.markdown a:not(.button):not(.navbar__brand):not(.navbar__item):not(.menu__link):not(.pagination-link):not(.pill-button):hover {
   background-image: linear-gradient(to right, #ffffff 50%, transparent 50%);
 }
 

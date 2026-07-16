@@ -7,15 +7,93 @@ tags: ["模拟", "益智"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 模拟</div>
 
 # 元胞自动机
 
-生命游戏、电子电路Wireworld、一维Wolfram规则，支持7种规则切换与预设图案
+多规则元胞自动机沙盒——内置 **5 种生命游戏变体 + 1 种电子电路模拟 + 8 种一维 Wolfram 规则**共 **7 类 14 种规则**。在网格上手绘初始状态，点击运行观察细胞随时间演化！
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/元胞自动机/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/元胞自动机/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/元胞自动机">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 进入页面默认是 **Conway's Life** 规则
+- **鼠标拖动**在网格上绘制初始状态（不同规则有不同绘制工具）
+- 点击 **▶ 运行** 开始演化，可随时 **⏸ 暂停** 或 **⏭ 单步**
+- 拖动速度滑块（1-60 步/秒）调整演化速度
+- 切换规则时网格自动清空，可点击**预设图案**快速放置经典图样
+- 支持自定义网格大小（10×10 到 300×300）、缩放（25% - 300%）
+
+## 支持的规则
+
+### 二维 · 生命游戏变体（5 种）
+
+| 规则 | 出生条件 | 存活条件 | 特点 |
+|---|---|---|---|
+| **Conway's Life** (B3/S23) | 3 邻居 | 2-3 邻居 | 经典平衡型，最广为人知 |
+| **HighLife** (B36/S23) | 3 或 6 邻居 | 2-3 邻居 | 会出现"繁殖者"图案 |
+| **Day & Night** (B3678/S34678) | 3, 6, 7, 8 邻居 | 3, 4, 6, 7, 8 邻居 | 活/死互换对称 |
+| **Seeds** (B2/S) | 2 邻居 | 无 | 永动机式爆炸扩张 |
+| **Maze** (B3/S12345) | 3 邻居 | 1-5 邻居 | 自动生长出迷宫结构 |
+
+### 电子电路（1 种）
+
+- **Wireworld** — 4 状态元胞自动机（空/导线/电子头/电子尾），可模拟时钟、异或门等数字电路
+
+### 一维 Wolfram 规则（8 种）
+
+| 规则 | 特点 |
+|---|---|
+| Rule 30 | 著名混沌/伪随机规则 |
+| Rule 110 | **图灵完备**，本身是计算机 |
+| Rule 90 | 产生谢尔宾斯基三角形分形 |
+| Rule 184 | 交通流模型 |
+| Rule 54 | 振荡/波，混沌与有序的混合 |
+| Rule 22 | 规整三角波图案 |
+| Rule 14 | 几乎静止，形成稳定结构 |
+| Rule 45 | 持续向外扩张增长 |
+
+## 特点
+
+- **7 类规则**（5 种生命游戏 + 1 种电子电路 + 1 种一维 Wolfram）
+- **8 种一维规则**——包含 Rule 30、Rule 110、Rule 90 等经典规则
+- **预设图案**——滑翔机、滑翔枪、LWSS、灯塔振荡器、环形电路等
+- **可调速度**（1-60 步/秒）、**单步运行**、**清空**、**随机填充**
+- **可调网格尺寸**（10-300 行/列）
+- **缩放查看**（25% - 300%）
+- 实时统计**世代数**与**存活细胞数**
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 绘制初始状态 | 鼠标拖动 | 手指拖动 |
+| 暂停 / 运行 | `▶ 运行` / `⏸ 暂停` 按钮 | 按钮点击 |
+| 单步 | `⏭ 单步` 按钮 | 按钮点击 |
+| 清空 | `🗑 清空` 按钮 | 按钮点击 |
+| 随机填充 | `🎲 随机填充` 按钮 | 按钮点击 |
+| 调节速度 | 速度滑块（1-60 步/秒） | 滑块 |
+| 切换规则 | 规则下拉菜单 | 同上 |
+| 调整网格 | 列数 / 行数输入框 | 输入框 |
+| 缩放 | `−` / `+` / `重置` 按钮 | 按钮点击 |
+| 放置预设 | 预设图案按钮 | 按钮点击 |
+
+## 经典预设图案
+
+- **滑翔机 (Glider)** — 经典移动图案，4 个世代后向右下移动 1 格
+- **滑翔枪 (Gosper Glider Gun)** — 周期性发射滑翔机，GoL 中最著名的图案
+- **LWSS (轻型太空船)** — 水平方向移动
+- **灯塔 (Beacon)** — 2 周期闪烁振荡器
+- **环形振荡器** — Wireworld 中电子绕环传播
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + Canvas + 原生 JavaScript，无任何依赖
+- **Canvas 渲染** — 二维网格 + 一维带状图均使用 Canvas 2D 绘制
+- **规则引擎** — 每种规则独立的 `stepLife` / `stepWireworld` / `step1D` 函数
+- **环形边界** — 网格使用 `(r + ROWS) % ROWS` 实现无缝循环
+- **像素化渲染** — `image-rendering: pixelated` 保留锐利的细胞边缘
+- **缩放** — CSS `transform: scale()` 配合 `transformOrigin: top left`

@@ -7,15 +7,52 @@ tags: ["英语", "背诵", "记忆"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 英语</div>
 
 # 摘词本
 
-英语单词背诵与复习工具，支持艾宾浩斯遗忘曲线复习
+英语单词录入 → 背诵 → 复习的完整闭环：基于**艾宾浩斯遗忘曲线**自动安排复习间隔，连续答对 5 次即标记为「已掌握」，并提供「未学习 / 学习中 / 已掌握」三种状态筛选。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/摘词本/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/摘词本/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/摘词本">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 四大功能
+
+- **✏️ 录入** — 输入英文 + 中文释义，一键加入云端词本
+- **📖 总览** — 按状态（未学习 / 学习中 / 已掌握）和排序（新→旧 / 旧→新 / 字母）筛选
+- **🎯 背诵** — 看中文写英文，答对自动累加 `review_count` 并推算下次复习时间
+- **🧠 复习** — 智能列出「到期的」单词，答错则重置次数并立即拉回 24 小时后再考
+
+## 使用步骤
+
+1. 登录后进入主菜单，点击 **录入** 添加单词
+2. 在 **总览** 中可按状态 / 字母 / 时间排序浏览
+3. 每日打开 **背诵** 完成设置数量的生词（默认 10 个，可在 ⚙ 设置中修改 1-50）
+4. 隔天打开 **复习**，系统自动列出艾宾浩斯曲线触发的旧词
+
+## 艾宾浩斯复习间隔
+
+| 已复习次数 | 下次复习 | 状态 |
+|---|---|---|
+| 1 次 | 24 小时后 | learning |
+| 2 次 | 48 小时后 | learning |
+| 3 次 | 96 小时后 | learning |
+| 4 次 | 168 小时（7 天）后 | learning |
+| 5 次 | — | **mastered** ✅ |
+
+复习答错 → 进度重置为 0，下次复习回到 24 小时。
+
+## 技术实现
+
+- **后端 API** — `https://api.oscarstudio.cn/api/wordbook`（CRUD + Bearer 鉴权）
+- **复习调度** — 前端按 `next_review` 时间戳与当前时间比较，过期即入队
+- **本地存储** — `localStorage.wordbook_settings` 保存每日背诵数量
+- **数据字段** — `word` / `translation` / `status` / `review_count` / `last_review` / `next_review`
+
+## 适用场景
+
+- 高中 / 大学英语日常单词积累
+- 备考四六级、雅思、托福的滚动复习
+- 任何需要长期记忆的英文词汇训练

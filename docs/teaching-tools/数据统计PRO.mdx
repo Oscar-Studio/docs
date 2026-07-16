@@ -7,15 +7,79 @@ tags: ["统计", "图像"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 数学</div>
 
-# 数据统计PRO
+# 数据统计 PRO
 
-更高级的数据统计功能
+**多组数据**的进阶统计分析——支持动态添加 / 删除数据组，同时输出**排序数据、分位数表、核心统计量表、箱线图、频数直方图**。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/数据统计PRO/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/数据统计PRO/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/数据统计PRO">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **多组数据并行** — 动态添加 / 移除数据组
+- **排序结果回显** — 自动从小到大排序展示
+- **分位数表** — Min / 3% / 5% / 10% / 25% / 50% / 75% / 90% / 95% / 97% / Max
+- **核心统计量表** — 平均数、众数、离差平方和、方差、标准差
+- **箱线图** — Plotly 渲染，支持所有数据点散点叠加
+- **频数直方图** — 多组叠加，自动统一分箱
+- **Plotly + Canvas 双引擎** — Plotly 失败时自动回退到 Canvas
+- **响应式表格** — 移动端表格横向滚动
+
+## 使用步骤
+
+1. 打开页面，默认已添加第 1 组数据输入框
+2. 在每组文本框中输入数据（支持空格 / 逗号 / 换行）
+3. 点击"+ 添加新数据组"按钮新增数据组
+4. 点击输入框右上角"×"删除该组
+5. 点击"开始统计"生成所有结果
+6. 查看排序数据、统计表、箱线图、直方图
+
+## 输出说明
+
+### 排序数据
+
+每组数据按从小到大排序后逐行展示。
+
+### 分位数表
+
+| 列 | 含义 |
+|---|---|
+| Min / Max | 数据最小值 / 最大值 |
+| 3% / 97% | 上下须线分位 |
+| 5% / 95% | 常用置信区间端点 |
+| 10% / 90% | 十分位数 |
+| 25% / 75% | 四分位数（Q1 / Q3） |
+| 50% | 中位数（Q2） |
+
+### 核心统计量
+
+| 列 | 公式 |
+|---|---|
+| 平均数 | `x̄ = Σxᵢ / n` |
+| 众数 | 出现次数最多的值（无则显示"无众数"） |
+| 离差平方和 | `SS = Σ(xᵢ − x̄)²` |
+| 方差（/n） | `s² = SS / n` |
+| 标准差（/n） | `s = √(s²)` |
+
+## 图表
+
+- **箱线图** — Plotly 绘制，含中位数线、Q1/Q3 箱体、上下须、所有数据点
+- **频数直方图** — 多组叠加显示（半透明），共享分箱区间
+
+## 技术实现
+
+- **Plotly 2.27** — 主要图表引擎（加载本地 `plotly-2.27.0.min.js`）
+- **Canvas 回退** — Plotly 失败时使用原生 Canvas 2D 绘制
+- **动态 DOM** — 每点击"添加"动态创建输入组
+- **Web Worker** — 否，纯主线程计算
+
+## 适用场景
+
+- 高中数学"统计"章节综合实验
+- 多班级 / 多组实验数据对比分析
+- 教师快速汇总学生成绩、实验数据
+- 探索性数据分析（EDA）入门

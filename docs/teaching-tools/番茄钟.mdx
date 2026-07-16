@@ -7,15 +7,60 @@ tags: ["计时", "专注"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 通用</div>
 
 # 番茄钟
 
-专注计时器，适合学习和工作
+经典番茄工作法计时器——25 分钟专注 + 5 分钟短休息，每完成 4 个番茄自动切换到 15 分钟长休息，全程自动循环。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/番茄钟/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/番茄钟/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/番茄钟">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **经典 25 / 5 / 15 模式** — 专注 25 分钟 → 短休息 5 分钟 → 每 4 个番茄进入长休息 15 分钟
+- **圆形进度环** — SVG `stroke-dashoffset` 平滑显示当前阶段剩余进度
+- **番茄计数** — 顶部 4 个圆点指示当前周期的番茄完成情况
+- **自定义时长** — 三段时间均可调整（专注 1-60 分钟，短休息 1-30 分钟，长休息 1-60 分钟）
+- **自动循环** — 每个阶段结束后 1 秒自动启动下一阶段
+- **颜色区分** — 专注阶段蓝色进度环，休息阶段绿色进度环
+- **跳过阶段** — 一键跳过当前阶段进入下一阶段
+- **结束提示音** — 800Hz（专注结束）/ 600Hz（休息结束）三声蜂鸣
+
+## 使用步骤
+
+1. 打开页面，默认显示 `25:00` 专注时间和 4 个未完成的番茄点
+2. （可选）调整专注 / 短休息 / 长休息的时长
+3. 点「开始」启动专注倒计时，进度环顺时针缩短
+4. 25 分钟结束后自动播放提示音并进入 5 分钟短休息
+5. 完成 4 个番茄后自动进入 15 分钟长休息，然后重新开始
+6. 随时可用「暂停 / 跳过 / 重置」控制
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| `Space` | 开始 / 暂停切换 |
+| `R` | 重置（回到专注时间起点） |
+| `S` | 跳过当前阶段 |
+
+## 番茄工作法小贴士
+
+- 一个完整的「番茄」= 25 分钟专注 + 5 分钟短休息
+- 每完成 4 个番茄，奖励自己一个 15 分钟长休息
+- 专注期间不要切换任务；休息时离开屏幕走一走
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **SVG 进度环** — `circle` + `stroke-dasharray` / `stroke-dashoffset` 实现平滑动画
+- **Web Audio API** — `OscillatorNode` 合成三声提示音，根据阶段切换频率
+- **自动调度** — `setTimeout` + `setInterval` 实现阶段间的无缝切换
+
+## 适用场景
+
+- 学生写作业 / 自习
+- 写论文 / 编程等需要长时间专注的工作
+- 任何想提高效率的脑力劳动

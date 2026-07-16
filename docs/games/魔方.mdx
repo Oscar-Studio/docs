@@ -1,0 +1,55 @@
+---
+title: 魔方
+description: 3D 魔方，手指滑动转面，拖动空白旋转视角，支持打乱/撤销/计时
+sidebar_position: 12
+tags: [益智游戏, 3D, 魔方]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">PUZZLE GAME / 3D</div>
+
+# 3D 魔方
+
+经典三阶魔方，在浏览器中以 3D 形式呈现。手指在魔方上滑动可旋转对应面，拖动空白处可旋转视角，附带打乱/撤销/计时等完整功能。
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/%E9%AD%94%E6%96%B9/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/%E9%AD%94%E6%96%B9">View source</PillButton>
+</div>
+
+## 玩法说明
+
+- **滑动魔方** — 在魔方上朝任意方向滑动，对应面会旋转 90°
+- **拖动空白处** — 旋转视角，从不同角度观察魔方
+- **滚轮 / 双指捏合** — 缩放视角
+- **打乱** — 一键随机打乱（25 步），开始计时
+- **撤销** — 撤销上一步操作
+- **还原** — 恢复到初始已还原状态
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 转面 | 在魔方上滑动 | 在魔方上滑动 |
+| 旋转视角 | 拖动空白处 | 拖动空白处 |
+| 缩放 | 鼠标滚轮 | 双指捏合 |
+| 转面快捷键 | `F` `B` `L` `R` `U` `D`（+ `Shift` 反向） | — |
+| 打乱 / 撤销 / 还原 | 按钮 | 按钮 |
+
+## 特点
+
+- 27 个 cubie 子方块建模，物理正确
+- 旋转轴/方向遵循右手法则，位置与朝向严格同步
+- 自动胜利检测：6 面颜色均匀时弹出胜利提示
+- 计时 + 步数统计，本地无持久化（每次刷新重置）
+- 跨平台：鼠标 + 触屏 + 键盘
+
+## 技术实现
+
+- **Three.js 0.160**（CDN 引入），WebGL 渲染
+- **Cubie 模型** — 27 个子方块，每个记录逻辑位置 `gridPos ∈ {-1, 0, 1}³` 和累积朝向 `quaternion`
+- **临时 Group 旋转** — 转面时把 9 个 cubie 临时挂到 Group 上旋转，动画结束后回写世界变换到主 Group，保证视觉与逻辑严格同步
+- **Raycaster 拾取** — pointerdown 时判断点击落在魔方上还是空白处，严格互斥地分发到「转面模式」或「视角模式」
+- **球坐标相机** — 拖动空白处累加 `(theta, phi)` 球坐标增量，滚轮调整 `distance`
+- **撤销栈** — 每次操作 push `(face, dir)`，撤销时执行反向旋转

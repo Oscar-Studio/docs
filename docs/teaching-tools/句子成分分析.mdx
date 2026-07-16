@@ -7,15 +7,51 @@ tags: ["语法"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 英语</div>
 
 # 句子成分分析
 
-分析输入句子的成分
+输入一句英文，自动用颜色高亮**名词 / 动词 / 形容词 / 副词 / 介词 / 代词 / 连词**，并给出每个词的详细词性标签——基于浏览器端的 [compromise.js](https://github.com/spencermountain/compromise) 自然语言处理库，无需后端、零延迟。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/句子成分分析/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/句子成分分析/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/英语句子成分分析">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **七类成分高亮** — 名词、动词、形容词、副词、介词、代词、连词各用不同颜色
+- **句子统计** — 自动切分句子数
+- **详细词性** — 每个词附带 compromise.js 的 tag（如 `Noun`、`Verb`、`PastTense`）
+- **纯前端** — 通过 unpkg 加载 compromise.js，无登录、无后端
+- **快捷键** — `Ctrl + Enter` 直接分析
+
+## 使用步骤
+
+1. 在文本框中输入或粘贴一句 / 多句英文
+2. 点击 **分析句子成分** 按钮，或按 `Ctrl + Enter`
+3. 下方依次展示：颜色图例 → 高亮原文 → 句子数 → 七类成分列表 → 逐词详细词性
+
+## 颜色图例
+
+| 颜色 | 成分 |
+|---|---|
+| 浅粉 | 名词 Noun |
+| 浅绿 | 动词 Verb |
+| 浅蓝 | 形容词 Adjective |
+| 浅紫 | 副词 Adverb |
+| 浅黄 | 介词 Preposition |
+| 浅橙 | 代词 Pronoun |
+| 浅棕 | 连词 Conjunction |
+
+## 技术实现
+
+- **NLP 库** — [compromise](https://unpkg.com/compromise)，约 250KB，自动加载失败会显示重试提示
+- **匹配策略** — 按词长度降序匹配，避免长短语被单词抢匹配
+- **页面加载** — 库就绪后会自动分析默认示例 `GitHub Pages is a fantastic static site hosting service...`
+
+## 适用场景
+
+- 英语语法课上分析长难句结构
+- 学生自查写作中名词 / 动词使用是否合理
+- 翻译练习时快速拆解原句成分

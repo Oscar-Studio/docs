@@ -7,15 +7,56 @@ tags: ["历史", "时间轴", "事件"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 历史</div>
 
 # 历史时间轴
 
-中国近现代史时间轴，垂直分为政治、外交、经济、科技、社会等类别，点击查看详情
+中国近现代史（1949–2003）横向甘特图，按 **政治 / 外交 / 经济 / 科技 / 社会** 五条垂直轨道并列展示。鼠标拖动左右滚动，点击事件条查看时间、人物、意义等详情。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/历史时间轴/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/历史时间轴/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/历史时间轴">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **横向甘特图** — 每条事件以横向色块显示，长度代表持续年份
+- **五条分类轨道** — 外交、政治、经济、科技、社会分别占一行，颜色区分
+- **45+ 历史事件** — 覆盖新中国成立、抗美援朝、土地改革、改革开放、港澳回归、加入 WTO、神舟五号等重要节点
+- **悬停查看详情** — 鼠标移到事件条上弹出信息卡，含时间、人物、内容、意义等多项
+- **图例点击筛选** — 点击顶部图例可隐藏 / 显示某一类别，方便聚焦某一维度
+- **鼠标拖动滚动** — 横向时间跨度大，按住鼠标拖动即可左右浏览
+- **年份刻度尺** — 顶部 1949–2003 年份对齐，方便快速定位
+
+## 使用步骤
+
+1. 打开页面，看到五条彩色轨道和顶部年份刻度
+2. 鼠标悬停在任意事件色块上，自动弹出详情卡（时间、内容、人物、意义）
+3. 按住鼠标左右拖动，可滚动到更早或更晚的年份
+4. 点击顶部图例（如 "政治"、"外交"）可隐藏或显示对应轨道
+5. 再次点击已隐藏的图例可恢复显示
+
+## 轨道分类
+
+| 类别 | 颜色 | 包含事件示例 |
+|---|---|---|
+| 外交 | 蓝色 | 抗美援朝、和平共处五项原则、万隆会议、恢复联合国席位、中美/中日关系正常化、港澳回归 |
+| 政治 | 红色 | 新中国成立、1954 年宪法、中共八大、十一届三中全会、邓小平南方谈话、中共十五大 / 十六大 |
+| 经济 | 绿色 | 过渡时期总路线、三大改造、一五计划、八字方针、家庭联产承包责任制、经济特区、浦东开发、加入 WTO |
+| 科技 | 紫色 | 两弹一星、原子弹 / 氢弹爆炸、东方红一号、杂交水稻、青蒿素、神舟五号 |
+| 社会 | 黄色 | 土地改革、大跃进 / 人民公社、文化大革命、文革结束 |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **单文件** — 整个时间轴在单一 `index.html` 中，可离线运行
+- **事件数据驱动** — 事件以 `eventsData` 数组形式定义，新增 / 修改事件无需改动渲染逻辑
+- **CSS Grid + Flex** — 轨道布局使用 Flexbox，事件条使用绝对定位
+- **暗色主题** — GitHub Dark 风格配色，护眼适合长时间阅读
+
+## 适用场景
+
+- 中学 / 高中历史课堂演示
+- 中国近现代史复习梳理（时间 + 类别双维度）
+- 教师备课辅助——按类别筛选讲解某一专题（如改革开放进程）
+- 学生自主学习，建立历史事件的时间纵深感

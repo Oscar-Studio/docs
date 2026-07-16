@@ -7,15 +7,50 @@ tags: ["配平", "AI"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 化学</div>
 
 # 化学方程式配平
 
-使用AI配平输入的化学方程式
+在左右两侧分别填入未配平的**反应物**与**生成物**，AI 调用 DeepSeek V4-flash 即可返回配平后的方程式——内置 4 个常见示例一键填入，化学反应配平不再手算。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/化学方程式配平/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/化学方程式配平/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/化学方程式配平">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **左右分栏** — 反应物与生成物分开输入，箭头自动居中
+- **一键示例** — 内置 4 个常见方程式（燃烧、氧化、置换等），点一下自动填入
+- **AI 配平** — 后端调用 DeepSeek V4-flash 模型，根据元素守恒自动配平
+- **回车提交** — 在任一输入框按 `Enter` 等同点击配平按钮
+- **登录态** — 通过 Oscar Studio 统一账号系统（`Authorization: Bearer`）鉴权
+
+## 使用步骤
+
+1. 在「反应物」框填入等号左侧的化学式（如 `H2 + O2`）
+2. 在「生成物」框填入等号右侧的化学式（如 `H2O`）
+3. 点击 **配平方程式** 按钮（或在任意输入框按 `Enter`）
+4. 等待几秒，下方会显示配平结果（如 `2 H2 + O2 → 2 H2O`）
+
+## 内置示例
+
+| 反应物 | 箭头 | 生成物 |
+|---|---|---|
+| `H2 + O2` | → | `H2O` |
+| `Fe + O2` | → | `Fe2O3` |
+| `CH4 + O2` | → | `CO2 + H2O` |
+| `Al + HCl` | → | `AlCl3 + H2` |
+
+## 技术实现
+
+- **后端** — 调 `POST https://api.oscarstudio.cn/api/chat`，使用 `deepseek-v4-flash` 模型
+- **System Prompt** — 明确要求 AI「只返回含 → 箭头的最终结果」，避免输出多余解释
+- **登录** — 优先取 `localStorage.userToken`，再回退到 `cookie.userToken`
+- **错误处理** — 网络/API/格式错误统一显示在 `.error` 区块，登录态失效会跳登录页
+
+## 适用场景
+
+- 化学课堂即时配平方程式演示
+- 作业中验证配平系数
+- 自学阶段练习氧化 / 还原 / 置换反应

@@ -7,15 +7,56 @@ tags: ["棋类"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 棋类</div>
 
 # 中国象棋
 
-中国象棋棋盘
+经典中国象棋——10×9 棋盘含**楚河汉界**、九宫、炮位，红黑双方对弈，吃掉对方将/帅或将死对方即获胜。支持车马炮相士兵将全部走法，含马腿/象眼/炮架等完整规则。
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/中国象棋/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/中国象棋/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/中国象棋">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- **红方先手**——双方轮流点击己方棋子移动
+- 点击己方棋子高亮选中，并显示所有可走位置（绿色圆点）
+- 点击目标位置完成移动；不能送将（将/帅被攻击时不能走该步）
+- 吃掉对方将/帅或让对方无合法走步即获胜（绝杀）
+- **"将军！"** 提示自动出现
+
+## 特点
+
+- 完整中国象棋规则：车、马、炮、相/象、士/仕、兵/卒、将/帅 七种棋子各自独立走法
+- 含**马腿**（蹩马腿）、**象眼**（塞象眼）、**炮架**（隔山打牛）等特殊规则
+- **过河兵**可横走、未过河只能前进
+- 双方将/帅**不能照面**（自动校验）
+- SVG 渲染的棋盘含九宫斜线、楚河汉界
+- 楷体字棋子，复古中国风
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 选中 / 移动 | 鼠标点击 | 手指点击 |
+| 重新开始 | `重置游戏` 按钮 | 按钮 |
+
+## 进阶规则
+
+- **将帅不能照面** — 双方将/帅若在同一直线上且中间无棋子，自动判为非法局面
+- **马腿** — 马走"日"字时，方向上第一格（马腿）被占据则不能走
+- **象眼** — 象走"田"字时，对角第一格（象眼）被占据则不能走
+- **炮架** — 炮吃子时必须跳过一个棋子（炮架），吃子目标在炮架之后
+- **过河兵** — 兵/卒未过河只能前进，过河后可横走但**不能后退**
+- **九宫限制** — 将/帅、士/仕的活动范围限定在己方九宫内
+- **不能送将** — 任何走步不能让己方将/帅处于被攻击状态
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + SVG + 原生 JavaScript，无任何依赖
+- **SVG 棋盘** — 网格线、九宫斜线用 SVG `<line>` 绘制
+- **棋子渲染** — 圆形 DOM 元素 + 楷体字 + 红/黑两色
+- **规则引擎** — 每种棋子独立 `getValidMoves` 函数，统一过 `isCheck` 过滤
+- **绝杀检测** — 当一方无任何合法走步且被将军时判负
+- **响应式** — 棋盘固定 450×500，自适应桌面与移动端

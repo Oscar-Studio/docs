@@ -7,15 +7,49 @@ tags: ["随机", "课堂"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 通用</div>
 
 # 抽签器
 
-转盘抽签工具，可用于随机抽取学生回答问题
+彩色转盘抽签工具——输入名单后转盘自动生成，点击按钮旋转 5 圈后停在随机位置上，并播放提示音。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/抽签器/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/抽签器/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/抽签器">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **彩色转盘** — 每个名字对应一个色块，视觉清晰
+- **自定义名单** — 文本框每行一个名字，最多 12 个（默认 `张三 … 郑十`）
+- **真实旋转动画** — 4 秒缓动 + 至少 5 圈，公平且有悬念
+- **随机结果** — 每次旋转角度由 `Math.random()` 决定，结果不可预测
+- **结束提示音** — `Web Audio` 合成 800Hz 蜂鸣
+- **更新转盘** — 修改名单后点「更新转盘」重新渲染色块
+
+## 使用步骤
+
+1. 打开页面，默认显示 8 个名字的彩色转盘
+2. 在文本框中修改名单（每行一个名字，最多 12 个）
+3. 点「更新转盘」让转盘重新生成
+4. 点「开始抽签」，转盘旋转 4 秒后停下
+5. 下方显示「恭喜抽中：xxx」并播放提示音
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| `Space` | 开始抽签（旋转中无效） |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **CSS 扇形** — `clip-path: polygon()` + `transform: skewY()` 实现扇形色块
+- **CSS 过渡** — `transition: transform 4s cubic-bezier(...)` 模拟物理减速
+- **Web Audio API** — `OscillatorNode` 合成结果提示音
+
+## 适用场景
+
+- 课堂随机抽人回答问题
+- 小组活动随机分组
+- 决定谁先发言 / 谁来抽奖

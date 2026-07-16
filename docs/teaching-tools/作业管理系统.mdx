@@ -7,15 +7,51 @@ tags: ["作业"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 通用</div>
 
 # 作业管理系统
 
-全新的作业管理系统
+课堂作业分组管理工具，按作业完成情况把学生分到不同分组（默认：未交作业 / 作业优秀 / 需订正 / 小组展示），所有状态自动保存到本地，下次打开继续使用。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/作业管理系统/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/作业管理系统/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/作业管理系统">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **多分组管理** — 默认提供 4 个分组（未交作业 / 作业优秀 / 需订正 / 小组展示），可自由增删与重命名
+- **学生多分组** — 同一名学生可同时出现在多个分组中（例如同时属于「作业优秀」和「小组展示」）
+- **名单导入** — 通过 `.txt` 文件按行导入学生姓名，未导入时按学号显示
+- **TTS 语音播报** — 一键循环朗读每个分组的学生姓名，方便课堂核对
+- **本地持久化** — 分组配置与学生分配全部保存到 `localStorage`，刷新页面不丢失
+- **响应式布局** — 桌面端双栏网格，移动端单栏自适应
+
+## 使用步骤
+
+1. 打开页面，默认显示 4 个分组卡片
+2. 点击右上角 ⚙ 设置按钮，调整学生总数、新增 / 删除 / 重命名分组
+3. （可选）通过「导入学生名单」上传 `.txt` 文件，每行一个名字
+4. 点击任一分组卡片，下方展开学生池；点击学生即加入该分组，再次点击移除
+5. 点击 🔊 按钮触发 TTS 循环播报，按钮变亮即为正在播报中，可再次点击取消
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| 点击分组卡片 | 展开 / 收起学生选择区 |
+| 点击学生标签 | 加入当前选中分组 |
+| 点击已加入的学生 | 从该分组移除 |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，单文件即可运行
+- **Web Speech API** — 使用浏览器内置 `speechSynthesis` 实现中文 TTS 播报
+- **本地存储** — `localStorage` 键 `homeworkSystemState` 持久化分组配置与分配结果
+- **无后端依赖** — 学生数据完全保存在本机浏览器中
+
+## 适用场景
+
+- 老师课后批量登记作业情况
+- 班级分层教学 / 小组划分
+- 课堂表扬与订正名单管理

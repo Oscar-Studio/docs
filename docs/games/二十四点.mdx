@@ -7,15 +7,57 @@ tags: ["数学", "益智"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 数学</div>
 
 # 二十四点
 
-用四个数字通过加减乘除得到24的经典数学游戏
+经典数学心算游戏——系统随机给出 4 个 1-10 的数字，使用 **+ − × ÷** 和括号构造算式，使结果恰好等于 **24**，每个数字必须**且只能**使用一次！
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/二十四点/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/二十四点/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/二十四点">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 系统随机出 4 个 1-10 的数字（系统保证有解，最多尝试 100 次）
+- 点击数字卡片或运算符按钮，或在输入框中直接输入算式
+- 按 `检查答案` 提交，或直接按 `Enter`
+- 答对自动开始下一题，错误显示真实计算结果
+- 显示**正确数 / 错误数 / 连续正确数**，并保留最近 20 条历史
+
+## 特点
+
+- 系统**保证有解**——出题时自动调用解算器验证，避免无解题
+- **安全算式求值**——使用 `new Function('"use strict"; return (...)')` 配合正则白名单，仅允许数字、运算符、括号
+- 长度限制防 DoS
+- **数字使用校验**——每个数字最多使用给定次数，必须**用完 4 个**
+- 历史记录最近 20 题，可视化复盘
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 插入数字 | 点击数字卡片 | 手指点击 |
+| 插入运算符 | 点击 `+ − × ÷ ( )` 按钮 | 按钮点击 |
+| 键盘输入 | 直接在输入框输入算式 | 不可用 |
+| 检查答案 | `检查答案` 按钮 / `Enter` | 按钮点击 |
+| 删除 | `删除` 按钮 | 按钮点击 |
+| 跳过本题 | `放弃` 按钮 | 按钮点击 |
+| 新的一局 | `新的一局` 按钮 | 按钮点击 |
+
+## 进阶技巧
+
+- **看大数先组合** — 看到 `8 8 3 3` 这种大数，优先考虑 8 ÷ 8 = 1, 3 × 3 = 9, 9 × 1 = 9 …… 或者 8 × 3 = 24
+- **凑 24 的常用路径** — 8 × 3、6 × 4、4 × 6、12 × 2、(a + b) × c、(a − b) × (c + d)
+- **活用分数** — 看到 `6 6 5 5`：`6 ÷ (5 − 6 ÷ 5) = 6 ÷ (5 − 1.2) = 6 ÷ 3.8 ≈ 1.58` 不行；改 `6 × (5 − 6 ÷ 5) ≈ 22.8`；再试 `(5 × 5 − 6) ÷ 6 ≈ 3.17` 也不行
+- **先乘后加减** — 看到 `1 5 5 5`：`5 × 5 − 5 × 1 = 20` 不行；`5 × (5 − 1) + 5 = 25` 不行；`(5 + 5 + 5) × 1 = 15` 不行；`5 × (5 − 1 / 5) = 24` ✓
+- **三数组合 + 一数乘除** — 把 3 个数先算出 X，再用第 4 个数凑出 24（X × 4 / 2 / 6 等）
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **安全求值** — 正则白名单 `/^[0-9+\-*/(). ]+$/` + 长度 ≤ 100 字符 + `new Function('"use strict"; ...')`
+- **解算器** — 递归枚举所有数字排列、运算符组合、括号位置，深度优先搜索
+- **状态机** — 出题 → 输入 → 检查 → 下一题，2 秒延迟过渡
+- **响应式** — 移动端自动调整卡片与按钮尺寸

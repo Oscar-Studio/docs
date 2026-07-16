@@ -7,15 +7,55 @@ tags: ["竞赛", "记分"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">TEACHING TOOL / 通用</div>
 
 # 记分板
 
-课堂竞赛、答题比赛专用记分工具
+课堂竞赛 / 答题比赛专用记分板——支持 2 到 6 支队伍，加减按钮 + 自定义分数，全屏展示比赛现场。
 
 <div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://tools.oscarstudio.cn/记分板/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+  <PillButton href="https://edu.oscarstudio.cn/记分板/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/记分板">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 功能特性
+
+- **多队支持** — 默认 2 支队伍，可扩展到最多 6 支
+- **加减按钮** — 每队独立 `−` / `+` 按钮，单击一步加减
+- **自定义分数** — 输入框可一次设置任意非负整数分数
+- **队伍命名** — 队伍名称直接在卡片上点击编辑
+- **全屏模式** — 一键全屏展示，适合投影到大屏幕
+- **重置保护** — 重置所有分数需二次确认，避免误操作
+- **键盘控制** — 常用操作可通过键盘快捷键完成
+
+## 使用步骤
+
+1. 打开页面，默认显示 2 支队伍（`队伍 1` / `队伍 2`）的 0 分
+2. 点击队伍名称可重命名
+3. 点击 `+` / `−` 调整分数，或在「自定义」框输入数字后点「设置」
+4. 需要更多队伍时点「+ 添加队伍」（最多 6 支）
+5. 投影时点「全屏」放大显示
+
+## 快捷键
+
+| 键位 | 作用 |
+|---|---|
+| `1` | 队伍 1 加 1 分 |
+| `Q` | 队伍 1 减 1 分 |
+| `2` | 队伍 2 加 1 分 |
+| `W` | 队伍 2 减 1 分 |
+| `R` | 重置所有分数 |
+| `F` | 进入 / 退出全屏 |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **Fullscreen API** — `document.documentElement.requestFullscreen()` 实现投影模式
+- **动态 DOM** — 添加队伍时通过 `createElement` 注入新卡片
+- **响应式** — 桌面端多栏网格，移动端自适应
+
+## 适用场景
+
+- 课堂抢答 / 知识竞赛
+- 小组积分赛
+- 任何需要实时计分的多方对抗

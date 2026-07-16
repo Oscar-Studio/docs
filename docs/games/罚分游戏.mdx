@@ -7,15 +7,66 @@ tags: ["数学", "益智"]
 
 import PillButton from '@site/src/components/PillButton';
 
-<div className="eyebrow-mono">DOCUMENTATION</div>
+<div className="eyebrow-mono">PUZZLE GAME / 数学</div>
 
 # 罚分游戏
 
-用给出的数字计算目标值，差值越大扣分越多
+数字估算挑战——系统给出一组 6 个 1-9 的数字和一个 **5-19 的目标值**，用这些数字（每个只能用一次）通过 **+ − × ÷** 和括号构造算式，**结果越接近目标越好**，差值越小得分越高！
 
-<div style={{display: 'flex', gap: '0.5rem', margin: '1.5rem 0', flexWrap: 'wrap'}}>
-  <PillButton href="https://games.oscarstudio.cn/罚分游戏/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/oscarstudio/...">View source</PillButton>
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/罚分游戏/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/罚分游戏">View source</PillButton>
 </div>
 
-{/* TODO: 编写此工具的文档。参考 `科学计算器.mdx` 的结构。 */}
+## 玩法说明
+
+- 系统随机生成 6 个 1-9 的数字（红色卡片显示）和 1 个 5-19 的目标值
+- 点击数字卡片和运算符按钮构造算式
+- 已使用的数字会被红色高亮（不再可用）
+- 按 `检查` 提交，**计算结果与目标的差值**即为得分（差值越小越好）
+- 完美命中目标值（差值 < 0.01）显示"完美！"
+- 按 `新游戏` 重新随机出题
+
+## 特点
+
+- 给出 **6 个数字**（比传统 24 点更难，需要舍弃部分数字）
+- 目标值 5-19 范围随机
+- **算式合法即可**——不强制使用所有数字，鼓励少用数字拿高分（每多用一个数字扣分）
+- 差值 < 0.01 视为完全命中
+- 暗色霓虹风格 UI
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|---|---|---|
+| 插入数字 | 点击数字卡片 | 手指点击 |
+| 插入运算符 | 点击 `+ − × ÷ ( )` 按钮 | 按钮点击 |
+| 检查答案 | `检查` 按钮 | 按钮点击 |
+| 清除算式 | `清除` 按钮 | 按钮点击 |
+| 新游戏 | `新游戏` 按钮 | 按钮点击 |
+
+## 进阶技巧
+
+- **先估后凑** — 拿到数字后先心算大致能凑出的范围，再选择最接近目标的组合
+- **少用数字原则** — 用 2 个数字能得到目标值就不要用 3 个（每多用一个扣分）
+- **分数 > 整数** — 4 ÷ 3 × 6 = 8 与 4 × 2 = 8 等价时优先 4 × 2（少用数字）
+- **目标值与数字的关系** — 看到 4 6 7 8 9 1 目标 15：`9 + 6 = 15` ✓ 直接命中零扣分
+- **留 1-2 个数字"垫底"** — 当无法精确命中时，主动放弃多余数字以减少扣分
+
+## 与二十四点的区别
+
+| 维度 | 二十四点 | 罚分游戏 |
+|---|---|---|
+| 数字数 | 4 个 | 6 个 |
+| 数字范围 | 1-10 | 1-9 |
+| 目标值 | 固定 24 | 随机 5-19 |
+| 强制使用 | 必须用完 4 个 | 可使用部分 |
+| 评判标准 | 命中即胜 | 差值越小越好 |
+| 难度 | 偏固定 | 变化大，需估算 |
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **安全求值** — 正则白名单 + 长度限制 + `new Function('"use strict"; ...')`
+- **数字卡片状态** — 同一索引的数字只能被使用一次（`addNumber` 跟踪已用索引）
+- **响应式** — 移动端数字卡片与按钮自适应
