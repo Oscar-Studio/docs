@@ -25,16 +25,29 @@ import PillButton from '@site/src/components/PillButton';
 - **关键点高亮** — 一次函数显示斜率、截距、与 x/y 轴交点；二次函数额外显示顶点、对称轴、判别式
 - **二次函数智能分析** — 自动判别 `Δ = b² − 4ac`，给出实根个数与位置
 - **对称轴可视化** — 二次函数模式下自动绘制对称轴虚线（teal 强调色）与顶点圆点
-- **Editorial 视觉风格** — 暖米色画布 + 深海军色画板 + 珊瑚色 CTA，参照 Claude DESIGN.md 设计令牌
+- **双主题切换** — 右上角 ☀/☾/◐ 循环切换浅色 / 深色 / 跟随系统；与入口页共用 `oscar-theme` localStorage 键
+- **Claude 节奏反色** — 浅色模式下米色页 + 深海军画板；深色模式下深色页 + 米色画板（数学可视化永远视觉突出）
 - **一键重置** — 快速回到默认参数
 
 ## 使用步骤
 
-1. 打开页面，默认进入**一次函数**模式
+1. 打开页面，默认进入**一次函数**模式（主题跟随系统或上次选择）
 2. 用顶部胶囊切换模式：`一次函数  y = kx + b` / `二次函数  y = ax² + bx + c`
 3. 拖动右侧滑块调整 `k` / `b`（一次）或 `a` / `b` / `c`（二次）
 4. 观察左侧 Canvas 图像、函数表达式与关键点卡片实时变化
-5. 点击底部珊瑚色"重置为默认值"按钮恢复初始参数
+5. 点击右上角主题按钮切换浅色 / 深色；选"◐ 跟随系统"会跟随操作系统的偏好
+6. 点击底部珊瑚色"重置为默认值"按钮恢复初始参数
+
+## 设计令牌
+
+界面参照 Claude DESIGN.md 的暖色画布 + 深色画板 + 珊瑚色强调节奏，并通过 [data-theme] 翻转：
+
+- 画布 `#faf9f5` / `#0f1419`
+- 控件卡片 `#efe9de` / `#252320`
+- 画板 `#181715` / `#faf9f5`（反色）
+- 标题字体 Tiempos / EB Garamond serif，正文 Inter / 系统 sans
+
+主题状态保存在 `localStorage['oscar-theme']`，与教学工具 launcher 共用同一 key。在 launcher 里切完主题进工具也是同一个主题。
 
 ## 参数说明
 
@@ -53,19 +66,11 @@ import PillButton from '@site/src/components/PillButton';
 | 一次项 `b` | −5 ~ 5 | 0.1 | 影响对称轴位置 `x = −b/(2a)` |
 | 常数项 `c` | −5 ~ 5 | 0.1 | 抛物线与 y 轴交点 `(0, c)` |
 
-## 设计令牌
-
-界面参照 Claude DESIGN.md 的暖色画布 + 深色画板 + 珊瑚色强调节奏：
-
-- 画布 `#faf9f5`、控件卡片 `#efe9de`、画板 `#181715`
-- CTA 珊瑚 `#cc785c`、teal 强调 `#5db8a6`（对称轴虚线）
-- 标题字体 Tiempos / EB Garamond serif，正文 Inter / 系统 sans
-- 节奏：cream canvas → cream-card 控制面板 → dark-mockup 画板 → cream-card 解析
-
 ## 技术实现
 
 - **纯静态** — HTML + CSS + 原生 JavaScript + Canvas 2D，无任何依赖
 - **Canvas 网格** — 自绘坐标系、刻度与函数曲线；曲线、顶点、交点使用设计令牌配色
-- **公式排版** — 用 serif 斜体 + sup/sub HTML 标签实现 `y = kx² + bx + c` 类排版，无需 KaTeX
+- **公式排版** — 用 serif 斜体 + sup/sub HTML 标签实现 `y = 1.0x² + 2.0x + 1.0` 类排版，无需 KaTeX
 - **实时渲染** — 滑块 `input` 事件触发重绘，零延迟
 - **判别式分析** — 自动计算 `Δ = b² − 4ac` 判断二次函数与 x 轴交点情况
+- **主题感知** — 链接 `_shared/design-tokens.css` + `_shared/theme-tokens.js`；监听 `themechange` CustomEvent 重绘
