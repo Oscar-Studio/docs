@@ -1,0 +1,23 @@
+---
+title: 2026-09-12 · 更新日志模块上线
+description: docs.oscarstudio.cn 新增"更新日志"模块，记录所有工具与游戏的发布历史。
+---
+
+import Link from '@docusaurus/Link';
+
+<div className="eyebrow-mono">CHANGELOG · 2026-09-12</div>
+
+# 更新日志模块上线
+
+以后所有工具、游戏、AI 的新功能、可见的 bug 修复都会在这里留档。
+
+## 站点
+
+- 📚 **docs** · 新增 <Link to="/changelog/">更新日志</Link> 入口（就在侧边栏底部）
+- 📚 **docs** · 主页 <Link to="/">Oscar Studio</Link> 加入"最近更新"卡片
+
+## 说明
+
+- 每篇按发布日期独立成页，slug 形如 `/changelog/2026-09-12-changelog-launch`
+- 仅记录用户可感知到的变更（新增 / 优化 / 修复）；内部重构、重命名一般不列
+- 想要 RSS 订阅？后续可加，需要的话告诉我

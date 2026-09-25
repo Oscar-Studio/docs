@@ -1,0 +1,77 @@
+---
+title: 欧拉流体模拟
+description: 基于 MAC 网格的欧拉视角流体演示（俯视向量场视图）：溃坝 / 圆柱绕流 / 双涡，可调压力迭代、粘度、重力
+sidebar_position: 13
+tags: [教学工具, 流体, 物理, MAC, 仿真]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">TEACHING TOOL / 物理 · 流体力学</div>
+
+# 欧拉流体模拟
+
+与「拉格朗日流体模拟」（同站搜索）配套的另一视角流体演示。欧拉视角下，物理量（速度、压力、染料浓度）定义在**固定的网格**上，模拟过程把网格当作「实验室坐标系」来演化场量。
+
+**默认视图是俯视的 u 矢量场**（箭头长度 = |u|，方向 = 流向），可切换到染料 / 速度 / 压力 / 涡量模式。
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/欧拉流体模拟/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/legacy-tools/欧拉流体模拟">View source</PillButton>
+</div>
+
+## 场景
+
+| 场景 | 适合演示 |
+| --- | --- |
+| **溃坝** | 经典 Euler benchmark；左侧水柱在重力下崩塌、推进、翻卷 — 矢量场清楚显示 wave 翻卷形成的 vortex |
+| **圆柱绕流** | 经典风洞场景；均匀入口来流撞圆柱，可观察绕流的速度梯度、柱后回流与涡量分布 |
+| **双涡** | 一对反向旋转的涡旋（蓝顺时针 / 橙逆时针），展示涡量场并验证涡旋的扩散寿命 |
+
+## HUD 指标
+
+按 *Stable Fluids* 通用约定显示：
+
+- **‖u‖∞** — 速度 L1 范数最大值（保留方向信息）
+- **‖div u‖∞** — 散度最大值（投影后应接近 0）
+- **CFL** — 库朗数（v_max · dt / dx），稳定极限 ~0.5
+- **FPS** / **t** / **网格** — 帧率、模拟时间、分辨率
+
+## 与拉格朗日版的区别
+
+| 维度 | 拉格朗日（SPH） | 欧拉（MAC + Projection） |
+| --- | --- | --- |
+| 描述对象 | 一个个粒子 | 一个个格点 |
+| 物理量挂在哪 | 粒子上 | 网格上 |
+| 「水」长什么样 | 一堆粒子 | 染料浓度场 + **矢量箭头** |
+| 边界 / 障碍 | 粒子碰撞 + 接触约束 | 格点标成 `solid`，u = v = 0 |
+| 难点 | 邻居搜索、核函数、聚团 | 压力泊松方程（Poisson）的迭代收敛 |
+| 适合 | 自由表面、飞溅、溃坝 | 大尺度流体、内部压力场、绕障流 |
+
+## 算法概览
+
+每子步 dt 顺序执行：
+
+```
+1. addForces         v += g * dt                  // 浮力式重力（仅染料格点）
+2. computeDivergence div = ∂u/∂x + ∂v/∂y            // 仅流体格
+3. solvePressure     雅可比迭代解 ∇²p = div/dt      // Neumann 固体边界
+4. subtractGradient  u -= dt ∂p/∂x,  v -= dt ∂p/∂y   // 投影 → ∇·u = 0
+5. diffuse           ν ∇²u（隐式 Jacobi）
+6. applyInletBC      圆柱绕流：左边界强制 u = inletU
+7. advect            半拉格朗日对流                  // 回溯采样
+```
+
+**浮力式重力**（仅对 dye > 阈值的格点施加）让染料真正「下落」，避免 hydrostatic equilibrium 把画面僵在半空。
+
+## 渲染层
+
+- **背景**：染料浓度场 → `ImageData`（γ 校正后的暗化蒙版，让矢量箭头成为视觉焦点）
+- **前景**：预渲染箭头 sprite → 高分辨率时降采样（stride 2/3），按 85 分位速归一化长度
+- **标量模式**（速度 / 压力 / 涡量）：RGBA 直写 `ImageData` 缩放
+
+## 适用场景
+
+- 流体力学入门：直观理解「投影法让 ∇·u = 0」的物理含义
+- 数值方法：观察 Jacobi 迭代次数对求解精度的影响（影响 ‖div u‖∞）
+- 与拉格朗日版（SPH）对照：同一道方程两种数值方法的差异

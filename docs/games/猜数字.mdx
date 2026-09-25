@@ -1,0 +1,92 @@
+---
+title: 猜数字
+description: 1A2B 数字 + Mastermind 颜色双模式推理破译游戏，3 档难度
+sidebar_position: 13
+tags: ["数字", "益智", "推理"]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">PUZZLE GAME / 推理</div>
+
+# 猜数字
+
+经典推理破译游戏合集——两种模式共用一套 UI：**1A2B 数字**（Bulls and Cows，0-9 不重复）**+ Mastermind 颜色**（6 色允许重复）。根据反馈轮迭代推理，在限定次数内命中隐藏序列。
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://games.oscarstudio.cn/猜数字/" variant="primary">Play →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/games/tree/main/legacy-tools/猜数字">View source</PillButton>
+</div>
+
+## 玩法说明
+
+- 系统随机生成 3-5 位隐藏序列（按难度）
+- 填入猜测序列（数字 / 颜色），按提交或 `Enter`
+- 系统返回反馈：
+  - **1A2B 模式**：`XAYB` — `A` 数字对且位置对，`B` 数字对但位置错
+  - **Mastermind 模式**：4-5 个黑白钉 — ⚫ 颜色对位置对 / ⚪ 颜色对位置错 / 🔘 不在
+- 命中即胜，超出次数即败
+- 模式 / 难度切换会自动开新局，避免状态污染
+
+## 模式
+
+| 模式 | 元素 | 数量 | 允许重复 |
+|------|------|------|----------|
+| 1A2B 数字 | 0-9 | 3-5 位 | ❌ 不允许 |
+| Mastermind 颜色 | 6 色（红橙黄绿蓝紫） | 3-5 位 | ✅ 允许 |
+
+## 难度
+
+| 等级 | 名称 | 位数 | 次数 |
+|------|------|------|------|
+| 易 | 入门 | 3 位 | 6 次 |
+| 中 | 标准 | 4 位 | 8 次 |
+| 难 | 硬核 | 5 位 | 10 次 |
+
+## 评分规则（Bulls and Cows）
+
+设 `secret = [s₀, s₁, …, sₙ₋₁]`，`guess = [g₀, g₁, …, gₙ₋₁]`：
+
+```
+bulls = Σ [gi === si]       // 位置对数字对
+cows  = Σ min(countGuess(v), countSecret(v)) - bulls   // 数字对位置错 (v ≠ 已被 bulls)
+```
+
+**示例**（1A2B 4 位）：
+- `secret=1234, guess=1243` → `2A2B`（位置 0、1 对，余下 3↔4 互换）
+- `secret=1234, guess=5678` → `0A0B`
+- `secret=1234, guess=4321` → `0A4B`（全部数字对，位置全错）
+
+**示例**（Mastermind 3 位）：
+- `secret=112, guess=121` → `1A2B`（位置 0 对；2 在 secret[2]；1 在 secret[1]）
+- `secret=112, guess=211` → `1A2B`（位置 1 对；2 在 secret[2]；1 在 secret[0]）
+
+## 操作
+
+| 操作 | 桌面端 | 移动端 |
+|------|--------|--------|
+| 填数字 | 键盘 `0-9` | 点击数字键盘 |
+| 选颜色 | 键盘 `1-6` 或点击色板 | 点击颜色按钮 |
+| 删除 | `Backspace` / 删除按钮 | 点击删除按钮 |
+| 清空 | `Delete` | — |
+| 提交 | `Enter` / 提交按钮 | 点击提交按钮 |
+| 新局 | `N` / 新局按钮 | 点击新局按钮 |
+| 关闭弹窗 | `Esc` / 查看按钮 | 点击查看按钮 |
+
+## 推理技巧
+
+1. **首轮求信息量** — 用 0、4、8 这种差值大的数字（1A2B），最大化每轮信息量
+2. **避免相邻数字** — 同时猜 1、2、3 会让反馈难分辨
+3. **用 B 数推位置** — 1A2B 的 `B` 表示数字对但位置错，可换位验证
+4. **Mastermind 探重复** — 反复选同一颜色直到 `B` 反馈为 0，可定位重复色
+5. **3 位置易，5 位置难** — 多 1 位时信息量暴增，建议先易后难
+
+## 技术实现
+
+- **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
+- **序列生成** — 1A2B 用 Fisher-Yates 洗牌后切片，Mastermind 直接随机数
+- **Bulls / Cows 算法** — 一次遍历算 bulls，再用 Map 频次减 bulls 得 cows
+- **状态机** — playing → won/lost，弹窗聚焦「再来一局」按钮
+- **响应式** — 移动端 5 列 / 3 列 grid 自适应，断点 480px / 360px
+- **色盲友好** — Mastermind 6 色均带形状图标（●▲■★◆⬟）
+- **持久化** — `localStorage: guess-number:best` 按 (mode × difficulty) 存最佳次数
