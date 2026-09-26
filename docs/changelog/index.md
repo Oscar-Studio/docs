@@ -13,9 +13,10 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-09-25-six-stroke-engine">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-09-26-docs-url-routing-fix">查看最新</Link>
 </div>
 
+- **2026-09-26** — <Link to="/changelog/2026-09-26-docs-url-routing-fix">文档站章节首页恢复直链访问</Link>
 - **2026-09-25** — <Link to="/changelog/2026-09-25-six-stroke-engine">六冲程汽油机工作循环模拟器上线</Link>
 - **2026-09-20** — <Link to="/changelog/2026-09-20-mental-memory-timer">心算记忆加入倒计时</Link>
 - **2026-09-19** — <Link to="/changelog/2026-09-19-new-game-and-tool">心算记忆 + 位似图形</Link>
