@@ -19,6 +19,7 @@ import Link from '@docusaurus/Link';
 ## [2026-09-26](/changelog/2026-09-26)
 
 - ⚡ [媒体播放器](/teaching-tools/media-player) 重做：音视频合并成一套控件，播放模式收成单个循环按钮，网页全屏生效
+- ⚡ [待办清单](https://tools.oscarstudio.cn/todo/) 快速添加边打字边高亮日期时间，截止日期/时间改用自绘选择器（深色主题不再白底）并补上清除
 - 🐛 [智能点名器](/teaching-tools/智能点名器) 修复界面整体偏左、长名字被裁掉，新增静音开关
 - 🐛 文档站 [更新日志](/changelog)、[标签](/tags)、[益智游戏](/games)、[AI](/ai)、[教学工具](/teaching-tools) 章节首页恢复直链访问
 
