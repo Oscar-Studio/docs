@@ -19,10 +19,11 @@ import Link from '@docusaurus/Link';
 ## [2026-09-27](/changelog/2026-09-27)
 
 - ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
-- ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：全部 45 个模型（20 免费 + 25 计费）都能选，价格实时从服务端拉；实时显示本次消耗、占今日额度比例和余额，超额直接拦下
+- ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：模型都能选，价格实时从服务端拉；实时显示本次消耗、占今日额度比例和余额，超额直接拦下
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 界面换成暖米色 + 珊瑚色，模型选择器改弹窗式（挂 FREE / THINK 徽章）
 - 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复 MiniMax 系：思考混进正文、讲稿被思考吃光截断两个问题
 - 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复「讲解讲到一半停住」：根因是输出上限只给 600 tokens，现在的模型光思考就要 1600+，直接导致正文为空。已提到 2500，并换掉两个已下线的默认模型
+- ⚡ [AI Studio](/ai/AI Studio) 和 [memoquest](https://memoquest.oscarstudio.cn) 的免费模型列表改为实时读取 OpenRouter 官方接口：清掉 13 个已下线的死条目、补上 14 个新模型，OpenAI/Google/Claude 三家不再展示；顺带修掉「免费模型被静默扣额度」和「启动失败锁死 6 小时」两个静默 bug
 
 ## [2026-09-26](/changelog/2026-09-26)
 
