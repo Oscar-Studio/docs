@@ -20,6 +20,8 @@ import Link from '@docusaurus/Link';
 
 - ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：全部 45 个模型（20 免费 + 25 计费）都能选，价格实时从服务端拉；实时显示本次消耗、占今日额度比例和余额，超额直接拦下
+- ⚡ [memoquest](https://memoquest.oscarstudio.cn) 界面换成暖米色 + 珊瑚色，模型选择器改弹窗式（挂 FREE / THINK 徽章）
+- 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复 MiniMax 系：思考混进正文、讲稿被思考吃光截断两个问题
 
 ## [2026-09-26](/changelog/2026-09-26)
 
