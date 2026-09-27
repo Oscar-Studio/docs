@@ -19,6 +19,7 @@ import Link from '@docusaurus/Link';
 ## [2026-09-27](/changelog/2026-09-27)
 
 - ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
+- ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：讲解（免费模型列表实时拉取）和板书编排分开选，标了单次消耗，免费模型限流会自动退避重试
 
 ## [2026-09-26](/changelog/2026-09-26)
 
