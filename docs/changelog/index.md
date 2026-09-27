@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-09-26">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-09-27">查看最新</Link>
 </div>
+
+## [2026-09-27](/changelog/2026-09-27)
+
+- ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
 
 ## [2026-09-26](/changelog/2026-09-26)
 
