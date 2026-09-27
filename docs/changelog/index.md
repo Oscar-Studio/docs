@@ -21,7 +21,8 @@ import Link from '@docusaurus/Link';
 - ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
 - ✨ [正则表达式工作台](https://tools.oscarstudio.cn/regex/) 上线（[文档](/tools/正则表达式工作台)）：实时高亮匹配、逐条拆解数字组与命名组、替换结果预览，内置 13 条常用片段；pattern 与 flags 可编进分享链接
 - ✨ [图片压缩器](https://tools.oscarstudio.cn/image-compressor/) 上线（[文档](/tools/图片压缩器)）：批量拖入压缩并逐张对比前后体积，支持 JPEG / WebP / PNG、质量滑块与最大尺寸限制，图片全程不上传
-- ✨ 文档站补建 [实用工具](/tools) 栏目：此前教学工具与游戏都有文档页，唯独工具站缺失，这次补上 9 个工具的概览与隐私说明对照表
+- ✨ [颜文字大全](https://tools.oscarstudio.cn/kaomoji/) 上线（[文档](/tools/颜文字大全)）：796 条颜文字、30 类情境，用 `qwen3-embedding-8b` 做语义检索，搜「无语到不想说话」也能命中；分类浏览走本地过滤零延迟
+- ✨ 文档站补建 [实用工具](/tools) 栏目：此前教学工具与游戏都有文档页，唯独工具站缺失，这次补上 10 个工具的概览与隐私说明对照表
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：模型都能选，价格实时从服务端拉；实时显示本次消耗、占今日额度比例和余额，超额直接拦下
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 界面换成暖米色 + 珊瑚色，模型选择器改弹窗式（挂 FREE / THINK 徽章）
 - 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复 MiniMax 系：思考混进正文、讲稿被思考吃光截断两个问题

@@ -5,13 +5,22 @@ sidebar_position: 0
 
 import ToolCard from '@site/src/components/ToolCard';
 
-<div className="eyebrow-mono">CATEGORY · 9 TOOLS</div>
+<div className="eyebrow-mono">CATEGORY · 10 TOOLS</div>
 
 # 实用工具
 
-面向日常开发、写作与文件处理的 9 个网页工具，域名 [tools.oscarstudio.cn](https://tools.oscarstudio.cn)。除待办清单与白板支持登录后云端同步外，其余工具全部在浏览器本地完成——输入的内容和选择的文件不会上传到服务器。
+面向日常开发、写作、表达与文件处理的 10 个网页工具，域名 [tools.oscarstudio.cn](https://tools.oscarstudio.cn)。除待办清单与白板支持登录后云端同步外，其余工具的数据处理全部在浏览器或自有服务器内完成。
 
 <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", marginTop: "2rem"}}>
+
+<ToolCard
+  icon="(๑•̀ㅂ•́)و✧"
+  name="颜文字大全"
+  description="按 30 类情境浏览，或用一句话描述心情来模糊搜索，796 条颜文字支持语义检索"
+  href="/tools/颜文字大全"
+  tags={['颜文字', '表达']}
+  liveUrl="https://tools.oscarstudio.cn/kaomoji/"
+/>
 
 <ToolCard
   icon="🔤"
@@ -101,6 +110,7 @@ import ToolCard from '@site/src/components/ToolCard';
 | 工具 | 数据去向 |
 |------|----------|
 | 正则表达式工作台、图片压缩器、编解码器、密码生成器、二维码生成器、字数统计、Markdown 编辑器 | 全部在浏览器本地处理，**不发起任何上传请求** |
+| 颜文字大全 | 分类浏览与字面搜索纯本地；**语义搜索**会把查询词发到自有服务器调 embedding 接口，仅用于本次相似度计算，不落库、不用于训练 |
 | 待办清单、白板 | 未登录时存本地；登录后同步到你的账号（游客则按访客身份存储） |
 
 所有工具都支持浅色 / 深色主题切换，并跟随系统的 `prefers-color-scheme` 初始偏好。
