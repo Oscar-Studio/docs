@@ -18,6 +18,8 @@ import Link from '@docusaurus/Link';
 
 ## [2026-09-27](/changelog/2026-09-27)
 
+- ✨ [骰子模拟器](https://edu.oscarstudio.cn/骰子模拟器/) 换成真 3D 骰子（[文档](/teaching-tools/骰子模拟器)）：实心立方体 + 抛起翻滚回弹 + 阴影随高度缩放；朝上的面由掷出的点数反解姿态得到，恒等于结果
+- ⚠️ [骰子模拟器](https://edu.oscarstudio.cn/骰子模拟器/) 「最大点数」改为「骰子面数」2–6：旧版允许填到 20，但画面只循环显示 1–6 点阵、总数却按 20 算，两者对不上；D20 需要二十面体，要的话另做
 - ✨ [memoquest](/ai/memoquest) 上线（[memoquest.oscarstudio.cn](https://memoquest.oscarstudio.cn)）：会板书的 AI 老师——讲解时重点按节奏贴到黑板上，讲到关键处停下来抽问，答完看完解析才继续
 - ✨ [正则表达式工作台](https://tools.oscarstudio.cn/regex/) 上线（[文档](/tools/正则表达式工作台)）：实时高亮匹配、逐条拆解数字组与命名组、替换结果预览，内置 13 条常用片段；pattern 与 flags 可编进分享链接
 - ✨ [图片压缩器](https://tools.oscarstudio.cn/image-compressor/) 上线（[文档](/tools/图片压缩器)）：批量拖入压缩并逐张对比前后体积，支持 JPEG / WebP / PNG、质量滑块与最大尺寸限制，图片全程不上传
