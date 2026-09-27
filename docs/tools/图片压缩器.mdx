@@ -1,0 +1,48 @@
+---
+title: 图片压缩器
+description: 批量压缩图片并逐张对比压缩前后体积，可选 JPEG / WebP / PNG、质量与最大尺寸。图片不上传，全部在浏览器完成。
+sidebar_position: 2
+tags: [实用工具, 图片, 效率]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">TOOL / 图片 · 效率</div>
+
+# 图片压缩器
+
+批量把图片压小，每一张都给出压缩前后的体积、尺寸对比和节省百分比。整条链路跑在浏览器里，图片不会离开你的设备。
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
+  <PillButton href="https://tools.oscarstudio.cn/image-compressor/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/tools/tree/main/legacy-tools/image-compressor">View source</PillButton>
+</div>
+
+## 核心能力
+
+- **批量处理**：点击选择或直接拖入，支持一次多选；压缩结果逐张列出预览与对比
+- **三种输出格式**：JPEG / WebP / PNG。WebP 压缩率通常优于 JPEG；若当前浏览器不支持所选格式，会自动回退并在结果里标注「已回退」
+- **质量滑块**：5%–100%，实时生效
+- **最大尺寸限制**：填 `800` 限制宽度，或填 `800x600` 限制宽高，**等比缩放且只缩不放**
+- **逐张下载或一键全部下载**
+- **汇总条**：整批图片的原始体积、压缩后体积与总节省百分比
+
+## 一些容易被忽略的细节
+
+这些坑在实现时都做了处理：
+
+- **JPEG 透明区会变黑**：JPEG 没有 alpha 通道，PNG 的透明区域编码后会变成黑色，所以转 JPEG 时会先铺一层白底
+- **PNG 无损，质量滑块对它无效**：选中 PNG 时滑块会置灰并给出提示，想让 PNG 变小只能限制尺寸或改用 WebP
+- **压完反而变大是可能的**：低质量转高质量、或小图转格式时体积可能不降反升，工具会如实标出「反而大了 N KB」而不是显示负的节省率
+- **HEIC 等格式会被拦截**：它们的 MIME 也是 `image/*`，但除 Safari 外浏览器都解不出来，所以按白名单明确拒绝并提示先转格式
+- **超大图会超出画布上限**：缩放后若仍超过约 1600 万像素（4096×4096），部分浏览器会静默失败，因此提前拦截并提示先限制尺寸
+- **EXIF 方向自动转正**：手机竖拍照片不会躺倒
+- **逐张串行处理**：并发解码多张大图容易把内存打爆
+
+## 文件名规则
+
+输出文件名会沿用原名并按需追加尺寸后缀，例如 `photo.png` 缩到 800×600 转 WebP 得到 `photo-800x600.webp`。只换格式不改尺寸时不加后缀。
+
+## 隐私
+
+图片通过浏览器本地的 `File` → `createImageBitmap` → `canvas` → `toBlob` 完成压缩，**全程不发起任何上传请求**。

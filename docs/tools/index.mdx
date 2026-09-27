@@ -1,0 +1,106 @@
+---
+title: 概览
+sidebar_position: 0
+---
+
+import ToolCard from '@site/src/components/ToolCard';
+
+<div className="eyebrow-mono">CATEGORY · 9 TOOLS</div>
+
+# 实用工具
+
+面向日常开发、写作与文件处理的 9 个网页工具，域名 [tools.oscarstudio.cn](https://tools.oscarstudio.cn)。除待办清单与白板支持登录后云端同步外，其余工具全部在浏览器本地完成——输入的内容和选择的文件不会上传到服务器。
+
+<div style={{display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", marginTop: "2rem"}}>
+
+<ToolCard
+  icon="🔤"
+  name="正则表达式工作台"
+  description="实时高亮匹配、拆解捕获组、预览替换结果，内置 13 条常用片段与可分享链接"
+  href="/tools/正则表达式工作台"
+  tags={['开发', '正则', '文本']}
+  liveUrl="https://tools.oscarstudio.cn/regex/"
+/>
+
+<ToolCard
+  icon="🗜"
+  name="图片压缩器"
+  description="批量压缩图片并逐张对比前后体积，可选 JPEG / WebP / PNG、质量与最大尺寸"
+  href="/tools/图片压缩器"
+  tags={['图片', '效率']}
+  liveUrl="https://tools.oscarstudio.cn/image-compressor/"
+/>
+
+<ToolCard
+  icon="🔐"
+  name="编解码器"
+  description="Base64 / URL / Hex / Unicode / HTML 编码解码，多种哈希与 HMAC，以及 JWT 解析"
+  href="https://tools.oscarstudio.cn/codec/"
+  tags={['编码', '哈希', '安全']}
+  liveUrl="https://tools.oscarstudio.cn/codec/"
+/>
+
+<ToolCard
+  icon="🔑"
+  name="密码生成器"
+  description="强密码与助记密码生成，zxcvbn 强度评估，支持批量生成与历史记录"
+  href="https://tools.oscarstudio.cn/password-generator/"
+  tags={['密码', '安全']}
+  liveUrl="https://tools.oscarstudio.cn/password-generator/"
+/>
+
+<ToolCard
+  icon="🍅"
+  name="待办清单"
+  description="优先级、截止日期、分组、子任务与标签；未登录本地保存，登录后云端同步"
+  href="https://tools.oscarstudio.cn/todo/"
+  tags={['效率', '待办', 'GTD']}
+  liveUrl="https://tools.oscarstudio.cn/todo/"
+/>
+
+<ToolCard
+  icon="🎨"
+  name="白板"
+  description="基于 tldraw 的无限画布：画笔、形状、文本、图片，自动保存并支持云端同步"
+  href="https://tools.oscarstudio.cn/#/whiteboard"
+  tags={['画板', '绘图', '效率']}
+  liveUrl="https://tools.oscarstudio.cn/#/whiteboard"
+/>
+
+<ToolCard
+  icon="📝"
+  name="Markdown 编辑器"
+  description="支持 LaTeX 公式的 Markdown 编辑器，可导出为图片并自定义配色"
+  href="https://tools.oscarstudio.cn/markdown-editor/"
+  tags={['编辑器', 'Markdown', 'LaTeX']}
+  liveUrl="https://tools.oscarstudio.cn/markdown-editor/"
+/>
+
+<ToolCard
+  icon="✍️"
+  name="字数统计"
+  description="实时统计中文字符、英文单词、段落、行数与阅读时长，支持多文稿与文件导入导出"
+  href="https://tools.oscarstudio.cn/word-counter/"
+  tags={['写作', '文本分析']}
+  liveUrl="https://tools.oscarstudio.cn/word-counter/"
+/>
+
+<ToolCard
+  icon="📱"
+  name="二维码生成器"
+  description="实时生成可定制的二维码：颜色、形状、渐变、中心 Logo 嵌入，导出 PNG / SVG"
+  href="https://tools.oscarstudio.cn/qrcode/"
+  tags={['二维码', '图形']}
+  liveUrl="https://tools.oscarstudio.cn/qrcode/"
+/>
+
+</div>
+
+## 隐私说明
+
+| 工具 | 数据去向 |
+|------|----------|
+| 正则表达式工作台、图片压缩器、编解码器、密码生成器、二维码生成器、字数统计、Markdown 编辑器 | 全部在浏览器本地处理，**不发起任何上传请求** |
+| 待办清单、白板 | 未登录时存本地；登录后同步到你的账号（游客则按访客身份存储） |
+
+所有工具都支持浅色 / 深色主题切换，并跟随系统的 `prefers-color-scheme` 初始偏好。
