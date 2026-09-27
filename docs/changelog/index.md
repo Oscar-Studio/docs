@@ -22,7 +22,7 @@ import Link from '@docusaurus/Link';
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 可选模型：全部 45 个模型（20 免费 + 25 计费）都能选，价格实时从服务端拉；实时显示本次消耗、占今日额度比例和余额，超额直接拦下
 - ⚡ [memoquest](https://memoquest.oscarstudio.cn) 界面换成暖米色 + 珊瑚色，模型选择器改弹窗式（挂 FREE / THINK 徽章）
 - 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复 MiniMax 系：思考混进正文、讲稿被思考吃光截断两个问题
-- 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复「讲解讲到一半停住」：抽问卡被丢时不再死锁，被长度截断和中途断流都会明确提示（原来全是静默的）
+- 🐛 [memoquest](https://memoquest.oscarstudio.cn) 修复「讲解讲到一半停住」：根因是输出上限只给 600 tokens，现在的模型光思考就要 1600+，直接导致正文为空。已提到 2500，并换掉两个已下线的默认模型
 
 ## [2026-09-26](/changelog/2026-09-26)
 
