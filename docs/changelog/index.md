@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-09-27">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-09-28">查看最新</Link>
 </div>
+
+## [2026-09-28](/changelog/2026-09-28)
+
+- 🐛 [骰子模拟器](https://edu.oscarstudio.cn/骰子模拟器/) 修复投掷时闪出硬边矩形的渲染伪影（[文档](/teaching-tools/骰子模拟器)）：去掉透视根上的非等比缩放与逐面背面剔除两处合成层脆弱写法
+- ⚠️ 同上更正文档里一处不准确的说法：拼出实心骰子靠的是正面遮挡，从不需要背面剔除
 
 ## [2026-09-27](/changelog/2026-09-27)
 
