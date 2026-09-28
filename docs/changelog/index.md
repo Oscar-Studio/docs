@@ -13,8 +13,14 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-09-28">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-09-29">查看最新</Link>
 </div>
+
+## [2026-09-29](/changelog/2026-09-29)
+
+- ✨ [霓虹音游](https://games.oscarstudio.cn/neon-pulse/) 上线，游戏大厅第 14 个游戏（[文档](/games/霓虹音游)）：参考 Phigros 玩法的浏览器音游，**音乐全部由内置合成器实时生成**、谱面从同一张音乐事件表派生，音画同步是结构性保证
+- ✨ 同上：2K–12K 任意键数、点按 / 长按 / 双押、EASY / NORMAL / HARD 三档难度与内置 3 首曲子；手机平板直接用手指点轨道就能玩，双押两根手指同时按
+- ✨ 同上：可导入本地音频（mp3 / wav / ogg / m4a）自动节拍检测扒谱；支持延迟校准，敲 20 下即测出实际感知延迟并补偿
 
 ## [2026-09-28](/changelog/2026-09-28)
 
