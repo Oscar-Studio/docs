@@ -13,8 +13,15 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-09-29">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-02">查看最新</Link>
 </div>
+
+## [2026-10-02](/changelog/2026-10-02)
+
+- ✨ [memoquest](https://memoquest.oscarstudio.cn)（[文档](/ai/memoquest)）首屏改成提问页：正中显示「[用户名] 今天想学点什么？」+ 大输入框，正下方是「讲解」「编排」两个模型展开按钮（点开就地浮出列表，不再套居中弹窗）；发出问题后整块平滑滑到屏幕底部，黑板与讲解区从下方浮现
+- 🐛 同上修复模型清单未加载时误显「约 0」（会被读成"免费"），改为「读清单…」
+- 🐛 [memoquest](https://memoquest.oscarstudio.cn)（[文档](/ai/memoquest)）修复登录后陷入无限渲染循环、每秒向后端发约 93 次请求的问题：线上实测 8 秒内打了 747 次 `GET /api/user`，手机会明显发烫耗电；修复后 30 秒内只发 2 次（登录时各一次），之后不再增长
+- ⚡ 同上：不再跟随你自定义的背景图，固定用纯色画布（其他站点不受影响，你设的背景图在那边照常显示）
 
 ## [2026-09-29](/changelog/2026-09-29)
 
