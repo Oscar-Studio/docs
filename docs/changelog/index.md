@@ -13,8 +13,14 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-02">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-05">查看最新</Link>
 </div>
+
+## [2026-10-05](/changelog/2026-10-05)
+
+- ⚡ [心算记忆](https://games.oscarstudio.cn/心算记忆/)（[文档](/games/心算记忆)）支持完整键盘操作：`0-9` 输入答案、`Enter` 下一题、`Backspace` 退格、`Delete` 清空、`Esc` 放弃；开始页与结算页按 `Enter` / 空格即可开始或再来一局；敲键盘时屏幕数字键跟着高亮反馈
+- 🐛 同上修复鼠标点过数字键后 `Enter` 重复触发、`Esc` 误触清空而非放弃、数字键判定不可靠等问题
+- 🐛 同上修复倒计时警戒色未生效（CSS 变量 `--accent-amber` 此前从未定义）
 
 ## [2026-10-02](/changelog/2026-10-02)
 
