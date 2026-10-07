@@ -13,8 +13,17 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-05">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-07">查看最新</Link>
 </div>
+
+## [2026-10-07](/changelog/2026-10-07)
+
+- ✨ [主站](https://oscarstudio.cn/)、[教学工具](https://edu.oscarstudio.cn/)、[益智游戏集](https://games.oscarstudio.cn/)、[实用工具](https://tools.oscarstudio.cn/)、[AI Studio](https://ai.oscarstudio.cn/)（[文档](/ai/AI Studio)）完成百度收录优化：首页不再对爬虫是空壳（此前主站 HTML 里一个链接都没有），工具名与链接改为直接写进网页源码
+- ✨ 同上：54 个[教学工具](https://edu.oscarstudio.cn/)（[文档](/teaching-tools)）、[游戏](https://games.oscarstudio.cn/)（[文档](/games)）、[实用工具](https://tools.oscarstudio.cn/)（[文档](/tools)）子页面统一补齐摘要、分享卡片与规范化链接，三种混用的标题格式也统一了
+- ✨ 同上：新增站点地图与 robots，合计 60 个页面可提交百度收录
+- ✨ [AI Studio](https://ai.oscarstudio.cn/)（[文档](/ai/AI Studio)）首屏新增功能介绍区，讲清多模型对话、Arena 并排评测、语音合成与音色克隆（此前页面可见文字只有界面框架）
+- 🐛 [文档站](https://docs.oscarstudio.cn/)修复三个指向子站的死链：「句子成分分析」「保护色实验」目录改名后文档未同步，「粒子引擎」页随功能下线移除；现 58 条子站外链全部可打开
+- 🐛 [益智游戏集](https://games.oscarstudio.cn/)（[文档](/games)）下线粒子引擎与画质选项：`oscar-quality` 全站只有读取没有写入，界面无法开启，属实验性遗留死代码
 
 ## [2026-10-05](/changelog/2026-10-05)
 
