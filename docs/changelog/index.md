@@ -13,8 +13,16 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-07">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-08">查看最新</Link>
 </div>
+
+## [2026-10-08](/changelog/2026-10-08)
+
+- ✨ [课堂倒计时器](https://edu.oscarstudio.cn/课堂倒计时器/)（[文档](/teaching-tools/课堂倒计时器)）全面重做：点开始时沙漏 180° 翻转并开始流沙，**上壶存沙量即剩余时间**，结束后沙全部落尽转绿
+- ✨ 同上：配色随剩余比例逐级升温（珊瑚 → 琥珀 → 危险红脉动 → 完成绿），原先写死的 30 秒/10 秒阈值改为按比例判断
+- ✨ 同上：新增专注模式（`F`），隐藏界面 + 放大读数 + 强制深色，适合投影到教室大屏
+- ✨ 同上：结束提示音改为 Web Audio 实时合成并提供 5 种音色（铃声/风铃/提示音/水滴/电子音），另加可选的「最后 10 秒滴答」；新增屏幕常亮（Wake Lock）与课堂任务标签
+- 🐛 同上：修复时长恢复的旧 bug——保存的时长只恢复了总长、未同步剩余量，恢复非 5 分钟时长时会显示"共 10 秒"配上一行 5 分钟的读数
 
 ## [2026-10-07](/changelog/2026-10-07)
 
