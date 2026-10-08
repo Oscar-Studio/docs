@@ -1,0 +1,80 @@
+---
+title: 英语人物写作
+description: 9AU1 Great People 人物写作精选：36 条高级表达 + 10 组升级替换 + 5 个亮点句模版
+sidebar_position: 27
+tags: ["英语", "写作", "表达"]
+---
+
+import PillButton from '@site/src/components/PillButton';
+
+<div className="eyebrow-mono">TEACHING TOOL / 英语</div>
+
+# 英语人物写作
+
+一张思维导图看懂人物类作文怎么挑、怎么写。36 条精选高级表达按**六条主线**分类，配套 10 组「平替 → 升级表达」对照表、5 个亮点句模版和 5 条避坑提醒——所有表达**点击即可复制**。
+
+<div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
+  <PillButton href="https://edu.oscarstudio.cn/英语人物写作/" variant="primary">Try it →</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/legacy-tools/英语人物写作">View source</PillButton>
+</div>
+
+## 六条写作主线
+
+人物作文的结构就是这六块，缺哪块分数就卡在哪块。点击导图上的任一分支，下方表达卡片会同步筛选。
+
+| 主线 | 英文标签 | 写什么 |
+|---|---|---|
+| 1 开篇定调 | INTRODUCING | 身份定位与整体印象 |
+| 2 早年求学 | EARLY LIFE | 成长环境与求学起点 |
+| 3 成就突破 | ACHIEVEMENTS | 关键成果与里程碑 |
+| 4 社会价值 | SOCIAL VALUE | 影响、贡献与延续 |
+| 5 行动品质 | QUALITIES | 性格、细节与 dedication |
+| 6 我们的收获 | LESSONS | 名言收尾与自我升华 |
+
+每条主线下 6 条表达，按「**亮点句 / 地道块**」分级：亮点句一篇放 1–2 个就够，其余用简单句保准确率。
+
+## 功能特性
+
+- **交互式思维导图** — SVG 六分支，点击节点即筛选下方卡片
+- **37 张表达卡片** — 每张含英文表达、中文释义、例句、素材出处分级
+- **关键词搜索** — 顶部搜索框实时过滤中英文内容
+- **点击即复制** — 表达与模版范例点一下进剪贴板，右下角 toast 提示
+- **升级替换表** — 10 组「能写但很平」vs「读起来像范文」左右对照，标注差在哪
+- **亮点句模版** — 5 个填空结构，撑得起一篇 80 词范文
+- **跟随站点主题** — 自动适配 edu 站浅色 / 深色，无需刷新
+
+## 升级替换怎么用
+
+这是全页最值得看的一张表。左边平替、右边升级，语料基本一样，差别在**抽象程度**和**画面感**：
+
+| 平替 | 升级表达 | 差在哪 |
+|---|---|---|
+| He is very famous. | He is one of the leading minds of his time. | 从「有名」升到「有地位」 |
+| He worked very hard for many years. | He kept trying despite failure and doubt, turning years of research into a useful discovery. | 形容词 → 因果链 |
+| His discovery helped many people. | His discovery brought practical benefits beyond the laboratory. | 从「多少人」升到「哪一层」 |
+| He came from a poor family. | He came from an ordinary background. | 中式直译 → 地道英文 |
+| In order to help people, he wrote books. | To raise public awareness, he wrote books. | in order to 永远换成 To… |
+
+## 避坑提醒
+
+- **少用 very + 形容词** — `very important` / `very good` 一律换成 remarkable、significant、far-reaching、little-known
+- **别整段都是 because…so…** — 换句式呼吸：`Instead of…,` / `With…,` / `Not only…but also…` / 结尾用冒号 + 分词
+- **亮点句要限量** — 80 词短文放 1–2 句最稳，炫技过多反而被挑语法错
+- **翻译残留直接丢弃** — `have a great influence on later generations` 这类直译句中文一读就露馅
+
+## 技术实现
+
+- **纯静态单页** — 无后端、无构建依赖，HTML 内联全部样式与脚本
+- **SVG 手绘导图** — 六条贝塞尔连线 + 核心节点，选中态通过 `.on` 类切换描边与填充
+- **设计令牌映射** — 本页配色映射到 edu 站共享的 `design-tokens.css`，变量统一加 `--gp-` 前缀，避免与共享令牌（`--ink` / `--primary` / `--canvas`）撞名把顶部导航改坏
+- **主题切换** — 复用 `_shared/tool-header.js` 的 `themechange` 事件，深浅两套色值通过 CSS 变量自动切换
+
+## 适用场景
+
+- 9AU1 Great People 等人物类作文的考前突击
+- 学生自查：作文里是否有「很平」的句子可替换成升级表达
+- 教师做范文对比板书，或作为素材分发页
+
+## 素材来源
+
+精选自《加油包.md》× 《句子.md》两份素材交叉比对：保留**框架稳、成分地道、句子能直接迁移**的部分，标注每条的来源与分级。
