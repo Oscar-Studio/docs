@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-09">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-10">查看最新</Link>
 </div>
+
+## [2026-10-10](/changelog/2026-10-10)
+
+- ⚡ [课堂倒计时器](https://edu.oscarstudio.cn/课堂倒计时器/)（[文档](/teaching-tools/课堂倒计时器)）设置面板的时长改用**分位步进器**：时 / 分 / 秒三位数字各两位，每组上下各一个 ±，点哪组只调整哪一位，取代原先只能按 10 秒粒度拖动的滑块
+- ✨ 同上小时位固定显示，为 0 也留 `00`，可直接从 0 往上加；秒满 60 向分钟进位、分满 60 向小时进位，反向则自动借位；仍支持点一下走一格与按住连走
 
 ## [2026-10-09](/changelog/2026-10-09)
 
