@@ -13,8 +13,15 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-10">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-11">查看最新</Link>
 </div>
+
+## [2026-10-11](/changelog/2026-10-11)
+
+- ✨ 新增**自建 Umami 统计后台**（`https://analytics.oscarstudio.cn`）：部署在自己的服务器上（Umami v3.4.0 + PostgreSQL，全程 HTTPS、证书自动续期），访问数据不再发送给第三方统计服务
+- ✨ [主站](https://oscarstudio.cn/)、[AI 工具集](https://ai.oscarstudio.cn/)、[HTML-PPT](https://ppt.oscarstudio.cn/)、[工具箱](https://tools.oscarstudio.cn/)、[memoquest](https://memoquest.oscarstudio.cn/)、[个人博客](https://blog.oscarstudio.cn/)、文档站此前**完全没有访问统计**，现已全部接入
+- ⚡ [教学工具](https://edu.oscarstudio.cn/) 与 [游戏大厅](https://games.oscarstudio.cn/) 从第三方云端统计**迁移到自建后台**，九站统计口径统一，以后只维护一个面板；云端账号与历史数据保留可回查
+- ⚡ 烟花模拟器并入主站统计，作为主站下的页面下钻查看，不再单独占一个站点条目
 
 ## [2026-10-10](/changelog/2026-10-10)
 

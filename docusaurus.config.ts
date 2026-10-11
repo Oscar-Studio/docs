@@ -34,6 +34,19 @@ const config: Config = {
     locales: ['zh-Hans'],
   },
 
+  // Umami 自建统计。注意：必须放在顶层，Docusaurus 3.9 的 themeConfig.headTags 不会被渲染；
+  // 且 attributes 的值必须是非空字符串（Joi 校验），布尔属性的写法是 defer="defer"。
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {
+        defer: 'defer',
+        src: 'https://analytics.oscarstudio.cn/script.js',
+        'data-website-id': 'fb2e7049-061f-44e9-8ce6-9d6841fcc5bf',
+      },
+    },
+  ],
+
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap',
   ],
