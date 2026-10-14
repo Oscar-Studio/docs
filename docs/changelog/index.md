@@ -13,8 +13,16 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-11">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-14">查看最新</Link>
 </div>
+
+## [2026-10-14](/changelog/2026-10-14)
+
+- ✨ 教学工具集新增[电路画板](https://edu.oscarstudio.cn/电路画板/index.html)：初中物理电路作图工具，**实物图与电路图共享同一份连通关系**，可无损来回互转
+- ✨ 同上**自动走线绕开所有元件**，拖动元件后重算，不会把线埋在元件底下
+- ✨ 同上**实时检查接法错误**：悬空接线柱、元件短路、电流表并联、电压表串联、回路不闭合等
+- ⚡ 同上**接线柱按所在节点的电位着色**，规则与导线一致；电流表/电压表的 `+`/`−` 端与电池两极保持固定红黑
+- ⚡ 同上选中元件后可**拖动旋转**（15° 一档，`Shift` 微调到 1°）
 
 ## [2026-10-11](/changelog/2026-10-11)
 
