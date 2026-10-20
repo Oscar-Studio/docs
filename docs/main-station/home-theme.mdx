@@ -1,60 +1,40 @@
 ---
 title: 主页主题
-description: oscarstudio.cn 提供两套可选主页：经典自定义（支持自定义背景）与 Atlas 实验主题。
+description: oscarstudio.cn 提供经典自定义与 Atlas 创意工作室两套主页主题，可在设置中切换。
 sidebar_position: 1
 tags: [主站, 个性化, 主题]
 ---
 
 # 主页主题
 
-`oscarstudio.cn` 主站支持两套可选主页风格，可在 [Customization](https://api.oscarstudio.cn/settings) 页面里切换。设置会保存到账户，跨设备生效。
+`oscarstudio.cn` 主站支持两套可选主页风格，可在[账号设置](https://api.oscarstudio.cn/settings)页面切换。主题选择保存到账户，并在登录设备间同步。
+
+## Atlas 创意工作室
+
+Atlas 是以中文为主的工具工作室首页，帮助新访客了解 Oscar Studio，也让回访用户快速找到工具。首页用暖白与朱橙色彩、原创 SVG 工作台插画和编辑式排版呈现五个项目：AI Studio、教学工具、实用工具、益智游戏和 HTML-PPT。
+
+- 首屏提供五个项目快捷入口；向下可查看精选工具并搜索完整目录
+- 搜索名称、介绍和关键词，并组合 AI、教学、实用工具、游戏和演示文稿分类
+- 支持 `⌘K` / `Ctrl+K` 聚焦搜索、手机折叠菜单、`paper/ink` 深浅配色和减少动态效果
+- 工具地址直接指向各子站，包含白板的 `/#/whiteboard` 等路由
+- 使用共享账号按钮，并按用户设置同步主页主题
+
+Atlas 保留轻量插画和短暂入场效果，不再依赖粒子画布、逐字标题或自定义鼠标指针。选中主题后，Atlas 页面代码按需加载。
 
 ## 经典自定义（classic）
 
-主站当前版本。
-
-- 支持上传自定义背景图、调整遮罩不透明度与模糊度
-- 5 个工具段直接铺在主页
-- 与背景音乐、液态玻璃等所有现有设置兼容
-
-## Atlas（实验）
-
-来自 `crazy/4` 的实验主题（曾用 `crazy/3`）。浅色 paper/ink 设计语言、xAI 风格的留白与节奏。
-
-- 极浅纸面画布（`#FAFAF7`），细发丝边线，黑底深色 hero 标题
-- Hero 区 Antigravity 粒子环（基于 `@react-three/fiber` + `three`）
-- DotField 圆点背景（鼠标移动时有 bulge 效果）+ SplitText 字符逐字入场
-- TopNav 浮条、SectionIndicator 左侧目录、OpilotModal（⌘K 唤起）
-- 主题内切 paper/ink 两套配色（Closing 区"Subscribe"切换）
-- **不应用** 用户上传的背景图（自带的暗色粒子与点阵已自洽）
-- 用户自定义的背景图仍保存在 `ui_config` 里，切回 classic 时还在
-
-> 首次切换到 Atlas 时会从 `crazy/4` 子树懒加载约 150 kB JS（含 three.js）+ 内联 CSS。Classic 用户首屏不会下载这些资源。
+经典主页继续提供主站原有的工具介绍布局，并兼容用户自定义背景、遮罩、模糊和背景音乐等设置。切换到 Atlas 时会跳过自定义背景层，切回经典主页后原有设置仍可使用。
 
 ## 切换方法
 
-1. 访问 [https://api.oscarstudio.cn/settings](https://api.oscarstudio.cn/settings) 登录（如未登录）
-2. 滚到 **主页主题** 卡片，选择 **经典自定义** 或 **Atlas（实验）**
-3. 点底部 **保存设置**
+1. 登录后访问 [账号设置](https://api.oscarstudio.cn/settings)。
+2. 在「主页主题」中选择 **经典自定义** 或 **Atlas**。
+3. 保存设置。
 
-## 新用户默认
+没有显式选择过主题的用户默认使用 Atlas，包括新用户、访客和未设置主页主题的老用户。选择的主题会保存在 `users.ui_config.homeTheme`，并同步到其他登录设备。
 
-所有"没有显式选过主题"的用户默认 Atlas（包括未登录访客、首次登录新用户、已有 `ui_config` 但从未保存过主题的老用户）。要保留 classic 需要在 settings 里手动切换一次，之后会同步到所有设备。
+## 开发者说明
 
-## 技术细节
-
-- 主页主题字段：`users.ui_config.homeTheme`，合法值为 `'classic' | 'atlas'`
-- 渲染入口：`main-station/src/App.tsx` 根据 `useHomeTheme()` 返回值决定渲染 `ClassicTree` 还是 `lazy(() => import('./themes/atlas/ThemeApp'))`
-- 样式隔离：Atlas 子树挂在 `#atlas-scope` 下，Tailwind 配置 `important: '#atlas-scope'` + `corePlugins.preflight: false`，不污染经典主页的全局 CSS
-- CSS 变量：crazy/4 的 paper/ink vars 挂在 `:where(#atlas-scope)` 上（而不是 `:root`），避免与主站 classic 主题的 `--dark --light` 等冲突
-- paper/ink 切换：crazy/4 的 `useTheme` 只改 `#atlas-scope` 的 `data-theme`，不碰 `<html>` 的（`<html>` 上的 `data-theme="light|dark"` 由主站 classic 在用，两套独立）
-- 数据持久化：双写（`localStorage['oscar-home-theme']` 立即生效 + `POST /api/ui` 同步到服务端）
-
-## 开发者：增加第三个主题
-
-1. 在 `main-station/src/themes/<id>/` 下新建一份主题组件树（参考 `src/themes/atlas/` 的结构，自带 `<ThemeApp />` 默认导出，挂 `#<id>-scope` 容器）
-2. 在 `API/routes/ui.js` 把 `VALID_HOME_THEMES` 与 `defaultHomeTheme()` 的分支补上
-3. 在 `main-station/vite.config.ts` 的 `manualChunks` 加一条新规则（让它的 heavy deps 也归到同一 chunk）
-4. 在 `main-station/src/hooks/useHomeTheme.tsx` 的白名单加上新值
-5. 在 `API/public/settings.html` 加一张主题卡
-6. 文档站 `docs/docs/main-station/home-theme.mdx` 加一段介绍
+- 主题选择与默认值由 `API/routes/ui.js` 维护；前端入口位于 `main-station/src/App.tsx`。
+- Atlas 保留单独的懒加载子树和 `#atlas-scope` 样式边界，避免影响经典主页。
+- Atlas 的 `paper/ink` 偏好储存在本地，和经典主题的全局配色相互独立。
