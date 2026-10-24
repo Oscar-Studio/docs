@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-20">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-24">查看最新</Link>
 </div>
+
+## [2026-10-24](/changelog/2026-10-24)
+
+- ✨ [五子棋](/games/五子棋)升级为弈室：接入自训练 AI，支持玩家对战、对战 AI、观战 AI，模型点击后按需下载
 
 ## [2026-10-20](/changelog/2026-10-20)
 
