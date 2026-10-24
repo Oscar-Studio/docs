@@ -34,6 +34,12 @@ import PillButton from '@site/src/components/PillButton';
 
 同一页面内切换模式无需重复加载。刷新后仍需点击下载按钮，资源缓存由浏览器管理。AI 在你的设备本地思考，无需登录。
 
+## 旧设备兼容
+
+AI 需要浏览器支持 WebAssembly SIMD。若旧 iPad 不支持，页面会在下载前显示说明；可尝试更新 iPadOS，或使用无需模型的「玩家对战」。当前推理引擎没有提供非 SIMD 版本。
+
+缺少 `crypto.subtle` 时，页面会使用 JavaScript 实现的 SHA-256 校验下载文件。
+
 ## 规则与操作
 
 - **15×15 棋盘，黑先白后，无禁手**；横、竖、斜任意方向连续五子及以上即获胜。
