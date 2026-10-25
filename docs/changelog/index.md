@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-24">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-25">查看最新</Link>
 </div>
+
+## [2026-10-25](/changelog/2026-10-25)
+
+- ⚡ [五子棋](/games/五子棋)优化 iPad / Safari 的加载内存：采用更轻的纯 CPU 引擎，保留云端下载和本地缓存
 
 ## [2026-10-24](/changelog/2026-10-24)
 
