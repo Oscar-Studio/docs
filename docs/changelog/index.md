@@ -18,7 +18,7 @@ import Link from '@docusaurus/Link';
 
 ## [2026-10-25](/changelog/2026-10-25)
 
-- ⚡ [五子棋](/games/五子棋)优化 iPad / Safari 的加载内存：采用更轻的纯 CPU 引擎，保留云端下载和本地缓存
+- ⚡ [五子棋](/games/五子棋)智能选择推理引擎：检测 GPU 实际可用性，失败时保留棋谱并自动切换纯 CPU
 
 ## [2026-10-24](/changelog/2026-10-24)
 
