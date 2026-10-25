@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-25">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-26">查看最新</Link>
 </div>
+
+## [2026-10-26](/changelog/2026-10-26)
+
+- ⚡ [数据统计](/teaching-tools/数据统计)条形图按升序排列，使用排序后的序号，并以同色横线标出各组平均值
 
 ## [2026-10-25](/changelog/2026-10-25)
 
