@@ -18,6 +18,8 @@ import Link from '@docusaurus/Link';
 
 ## [2026-10-26](/changelog/2026-10-26)
 
+- ⚡ [主站](/main-station/home-theme)、[AI Studio](/ai/AI%20Studio)及游戏、教学、实用工具集下线 Opilot，保留原有搜索与聊天功能
+
 - ⚡ [数据统计](/teaching-tools/数据统计)条形图按升序排列，使用排序后的序号，并以同色横线标出各组平均值
 
 ## [2026-10-25](/changelog/2026-10-25)
