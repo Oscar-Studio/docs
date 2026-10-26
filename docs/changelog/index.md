@@ -18,6 +18,9 @@ import Link from '@docusaurus/Link';
 
 ## [2026-10-26](/changelog/2026-10-26)
 
+- ✨ [主站与工具集](/main-station/home-theme)统一新版入口，取消 Classic 切换，加入可调遮罩和模糊的个性化照片封面
+- ✨ [HTML-PPT](https://ppt.oscarstudio.cn/)新增演示封面与独立作品管理区
+
 - 🐛 主站「教学工具」目录移除两个已合并的旧统计卡片，只保留[数据统计](/teaching-tools/数据统计)，并同步更新工具简介
 
 - ⚡ [主站](/main-station/home-theme)、[AI Studio](/ai/AI%20Studio)及游戏、教学、实用工具集下线 Opilot，保留原有搜索与聊天功能
