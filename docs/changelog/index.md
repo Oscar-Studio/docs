@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-26">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-29">查看最新</Link>
 </div>
+
+## [2026-10-29](/changelog/2026-10-29)
+
+- ✨ [首页背景](/main-station/home-theme)支持照片直传 COS，背景与调整随账户同步
+- ⚡ 账户设置移除主题颜色，[待办工具](https://tools.oscarstudio.cn/todo/)内新增提醒默认值设置
 
 ## [2026-10-26](/changelog/2026-10-26)
 
