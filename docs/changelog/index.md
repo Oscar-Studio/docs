@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-10-29">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-10-30">查看最新</Link>
 </div>
+
+## [2026-10-30](/changelog/2026-10-30)
+
+- ⚡ [首页背景](/main-station/home-theme)改为 UI 设置上传、首页选择候选图，切换时保留照片
+- ⚡ 首页背景优先显示本地缓存，再同步账户选择与调整
 
 ## [2026-10-29](/changelog/2026-10-29)
 
