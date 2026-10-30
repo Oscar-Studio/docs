@@ -18,6 +18,8 @@ import Link from '@docusaurus/Link';
 
 ## [2026-10-30](/changelog/2026-10-30)
 
+- 🐛 修复遗留 bug：[游戏大厅](https://games.oscarstudio.cn/)与[实用工具集](https://tools.oscarstudio.cn/)默认画布缺少首页边框的问题
+
 - ✨ [2048](/games/2048)升级彩色半透明果冻界面，新增按方向回弹与双块贴合挤压融合动画
 
 - ⚡ [首页背景](/main-station/home-theme)改为 UI 设置上传、首页选择候选图，切换时保留照片
