@@ -20,6 +20,8 @@ import Link from '@docusaurus/Link';
 
 - ⚡ [2048](/games/2048)果冻合成动画调整至约 420ms，保留贴合挤压与无缝融合
 
+- ⚡ [密码生成器](https://tools.oscarstudio.cn/password-generator/)复制强密码或助记密码后不再启动 30 秒倒计时，也不再自动清空剪贴板，需要时可手动一键清除
+
 ## [2026-10-30](/changelog/2026-10-30)
 
 - 🐛 修复遗留 bug：[游戏大厅](https://games.oscarstudio.cn/)与[实用工具集](https://tools.oscarstudio.cn/)默认画布的首页边框与页首过矮问题
