@@ -13,8 +13,19 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-01">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-06">查看最新</Link>
 </div>
+
+## [2026-11-06](/changelog/2026-11-06)
+
+- 🐛 修复遗留 bug：[2048](/games/2048)的加分提示不再被下一步棋盘动画取消，快速滑动时分数也能看清
+- ⚡ 加分「+N」改为独立浮动气泡，连着得分时向上堆叠、同时可见，连得越多显示越快
+
+## [2026-11-05](/changelog/2026-11-05)
+
+- ✨ [2048](/games/2048)新增全站 TOP 30 排行榜：侧栏改为「我的记录 / 全站 TOP 30」双标签页，登录用户的最高分参与排名，本机 TOP 10 记录完整保留
+
+- ⚡ 游戏结束与中途弃局都会上报成绩，服务端取较大值；未登录可暂存成绩，登录后自动补报
 
 ## [2026-11-01](/changelog/2026-11-01)
 
