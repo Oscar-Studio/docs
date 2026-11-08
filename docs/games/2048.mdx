@@ -27,8 +27,8 @@ import PillButton from '@site/src/components/PillButton';
 
 ## 特点
 
-- 简洁优雅的视觉设计
-- 流畅的滑动动画
+- 页首可切换「果冻」和「原版」：果冻保留弹性合成动画，原版使用经典方块配色和简短的平移动画
+- 切换主题时保留棋局与分数，主题偏好在当前浏览器中记住
 - 分数记录与本地存储
 - 全站 TOP 30 排行榜（登录用户参与）
 - 随时重新开始
@@ -62,7 +62,7 @@ import PillButton from '@site/src/components/PillButton';
 ## 技术实现
 
 - **纯静态** — HTML + CSS + 原生 JavaScript，无任何依赖
-- **流畅动画** — CSS `transform` + `transition` 实现方块移动与合并
-- **本地存储** — 最高分持久化在 `localStorage`
+- **动画** — Web Animations API 实现方块平移与果冻合成效果
+- **本地存储** — 保存主题、未结束的棋局和最高分
 - **云端榜单** — 共享登录 + MySQL 存储每位用户的最高分，前 30 名公开可读
 - **响应式** — 桌面与移动端统一体验，触屏滑动支持
