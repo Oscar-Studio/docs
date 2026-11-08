@@ -22,6 +22,7 @@ import Link from '@docusaurus/Link';
 - ✨ [2048](/games/2048)可在「果冻」与「原版」主题之间切换。原版只保留简短的平移动画，切换时棋局和分数会保留。
 - ✨ [2048](/games/2048)新增背景音乐和操作音效，可在棋盘下方分别调整音量。
 - [主站首页](/main-station/home-theme)移除「山间日出」预设背景，之前选用它的用户会回到无图画布。
+- ✨ [AI Studio](https://ai.oscarstudio.cn/)（[文档](/ai/AI%20Studio)）的 MiniMax 模型更新为 **M3** 和 **M3.1-Flash**：M3.1-Flash 支持 1M 上下文和多模态，单价约为 M3 的一半；M2.7 下线，原先选了它的用户自动切到 M3.1-Flash
 
 ## [2026-11-06](/changelog/2026-11-06)
 
