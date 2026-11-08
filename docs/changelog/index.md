@@ -22,7 +22,8 @@ import Link from '@docusaurus/Link';
 - ✨ [2048](/games/2048)可在「果冻」与「原版」主题之间切换。原版只保留简短的平移动画，切换时棋局和分数会保留。
 - ✨ [2048](/games/2048)新增背景音乐和操作音效，可在棋盘下方分别调整音量。
 - [主站首页](/main-station/home-theme)移除「山间日出」预设背景，之前选用它的用户会回到无图画布。
-- ✨ [AI Studio](https://ai.oscarstudio.cn/)（[文档](/ai/AI%20Studio)）的 MiniMax 模型更新为 **M3** 和 **M3.1-Flash**：M3.1-Flash 支持 1M 上下文和多模态，单价约为 M3 的一半；M2.7 下线，原先选了它的用户自动切到 M3.1-Flash
+- ✨ [AI Studio](https://ai.oscarstudio.cn/)（[文档](/ai/AI%20Studio)）模型清单全面更新：DeepSeek 只剩 V4.1 Flash、MiniMax 切国内节点并保留 M3 / M3.1-Flash、MiMo 换成 V2.6 系列、GLM 换成 5.3 与 5.3 Flash、腾讯新增 Hy4，Meituan / LongCat 下架；旧模型的存量选择会自动迁移
+- 🐛 [AI Studio](https://ai.oscarstudio.cn/) 修复 DeepSeek「深度思考」开关不生效：参数被套进 `extra_body` 导致服务端收不到，模型始终在思考
 
 ## [2026-11-06](/changelog/2026-11-06)
 
