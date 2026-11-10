@@ -18,6 +18,7 @@ import Link from '@docusaurus/Link';
 
 ## [2026-11-10](/changelog/2026-11-10)
 
+- ✨ [AI Studio](/ai/AI%20Studio)上线独立首页和浅深主题，重新组织 Chat、TTS 工作台，并下线 Arena。
 - ✨ 教学工具新增[掷硬币模拟](https://edu.oscarstudio.cn/%E6%8E%B7%E7%A1%AC%E5%B8%81%E6%A8%A1%E6%8B%9F/)，用折线图观察两枚硬币的三类结果，支持切换累计次数、实验概率与图表视图。
 
 ## [2026-11-08](/changelog/2026-11-08)
