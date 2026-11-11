@@ -18,6 +18,7 @@ import Link from '@docusaurus/Link';
 
 ## [2026-11-11](/changelog/2026-11-11)
 
+- ✨ [AI Studio Chat](https://ai.oscarstudio.cn/chat/)支持长按输入框或点击麦克风，把录音转为可编辑的消息草稿。
 - ✨ [AI Studio 语音合成](https://ai.oscarstudio.cn/tts/)新增 Eleven v4 Turbo，支持搜索和试听共享音色以及下载 MP3。
 
 ## [2026-11-10](/changelog/2026-11-10)
