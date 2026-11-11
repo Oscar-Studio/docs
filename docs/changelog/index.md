@@ -13,8 +13,14 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-11">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-12">查看最新</Link>
 </div>
+
+## [2026-11-12](/changelog/2026-11-12)
+
+- ⚡ [数独](https://games.oscarstudio.cn/数独/)改用解题技巧分级，Lv1 开局至少有 8 格可直接填，并统一为暖色界面。
+- ⚡ [猜数字](/games/猜数字)统一为暖色界面，Mastermind 用实心菱形和空心圆区分两种命中。
+- 🐛 修复遗留问题：[数独](https://games.oscarstudio.cn/数独/)可正常重置本题并在最后一题后返回难度选择。
 
 ## [2026-11-11](/changelog/2026-11-11)
 
