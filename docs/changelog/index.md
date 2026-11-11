@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-10">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-11">查看最新</Link>
 </div>
+
+## [2026-11-11](/changelog/2026-11-11)
+
+- ✨ [AI Studio 语音合成](https://ai.oscarstudio.cn/tts/)新增 Eleven v4 Turbo，支持搜索和试听共享音色以及下载 MP3。
 
 ## [2026-11-10](/changelog/2026-11-10)
 
