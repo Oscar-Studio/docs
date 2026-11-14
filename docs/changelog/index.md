@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-12">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-14">查看最新</Link>
 </div>
+
+## [2026-11-14](/changelog/2026-11-14)
+
+- ✨ [雾镇夜话 · AI 狼人杀](https://werewolf.oscarstudio.cn/)上线，支持好友联机、AI 补位和对局复盘。
 
 ## [2026-11-12](/changelog/2026-11-12)
 
