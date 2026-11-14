@@ -20,6 +20,7 @@ import Link from '@docusaurus/Link';
 
 - ✨ [雾镇夜话 · AI 狼人杀](https://werewolf.oscarstudio.cn/)上线，支持好友联机、AI 补位和对局复盘。
 - 🐛 修复账号自定义背景覆盖[雾镇夜话](https://werewolf.oscarstudio.cn/)游戏场景的问题。
+- ⚡ [雾镇夜话](https://werewolf.oscarstudio.cn/)优化手机牌桌布局，并新增全屏按钮。
 - ⚡ [AI Studio 与 MemoQuest](/ai/model-pricing)更新每日积分和缓存计费，AI Studio 与几何画板加入 Qwen3.8 Flash 和 27B。
 
 ## [2026-11-12](/changelog/2026-11-12)
