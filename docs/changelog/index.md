@@ -19,6 +19,7 @@ import Link from '@docusaurus/Link';
 ## [2026-11-14](/changelog/2026-11-14)
 
 - ✨ [雾镇夜话 · AI 狼人杀](https://werewolf.oscarstudio.cn/)上线，支持好友联机、AI 补位和对局复盘。
+- 🐛 修复账号自定义背景覆盖[雾镇夜话](https://werewolf.oscarstudio.cn/)游戏场景的问题。
 
 ## [2026-11-12](/changelog/2026-11-12)
 
