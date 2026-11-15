@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-14">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-15">查看最新</Link>
 </div>
+
+## [2026-11-15](/changelog/2026-11-15)
+
+- 🐛 修复 AI Studio 长回复挤出输入框的问题，长对话可在消息区内滚动。 [打开 Chat](https://ai.oscarstudio.cn/chat/)
 
 ## [2026-11-14](/changelog/2026-11-14)
 
