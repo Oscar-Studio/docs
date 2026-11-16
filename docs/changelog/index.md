@@ -21,6 +21,7 @@ import Link from '@docusaurus/Link';
 - ✨ [Oscar Studio 首页](/main-station/home-theme)新增「最近使用」，可直接打开最近用过的 4 个工具。
 - ✨ [设置中的精选工具](https://api.oscarstudio.cn/user/settings#featured)可选择首页推荐并拖动排序，保存后随账号同步。
 - 🐛 账号背景图 / 背景音乐不再自动覆盖所有页面，只保留在各站首页的「首页背景」中按需使用。
+- 🐛 修复[首页](/main-station/home-theme)工具搜索框聚焦时出现双层描边的问题，只保留整条搜索框的一层高亮。
 - 🗑 下线英语人物写作、英语写作精华、语文句子成分分析三个教学工具。
 - ⚡ [掷硬币模拟](https://edu.oscarstudio.cn/%E6%8E%B7%E7%A1%AC%E5%B8%81%E6%A8%A1%E6%8B%9F/)将实验台和趋势图上下排列，加入菊花版 1 元硬币与低速 3D 物理投掷。
 
