@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-15">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-16">查看最新</Link>
 </div>
+
+## [2026-11-16](/changelog/2026-11-16)
+
+- ✨ [Oscar Studio 首页](/main-station/home-theme)新增「最近使用」，可直接打开最近用过的 4 个工具。
+- ✨ [设置中的精选工具](https://api.oscarstudio.cn/user/settings#featured)可选择并排列首页推荐，保存后随账号同步。
 
 ## [2026-11-15](/changelog/2026-11-15)
 
