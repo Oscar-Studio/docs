@@ -19,7 +19,7 @@ import Link from '@docusaurus/Link';
 ## [2026-11-16](/changelog/2026-11-16)
 
 - ✨ [Oscar Studio 首页](/main-station/home-theme)新增「最近使用」，可直接打开最近用过的 4 个工具。
-- ✨ [设置中的精选工具](https://api.oscarstudio.cn/user/settings#featured)可选择并排列首页推荐，保存后随账号同步。
+- ✨ [设置中的精选工具](https://api.oscarstudio.cn/user/settings#featured)可选择首页推荐并拖动排序，保存后随账号同步。
 
 ## [2026-11-15](/changelog/2026-11-15)
 
