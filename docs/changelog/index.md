@@ -18,7 +18,7 @@ import Link from '@docusaurus/Link';
 
 ## [2026-11-17](/changelog/2026-11-17)
 
-- ✨ [反馈中心](https://api.oscarstudio.cn/feedback)改用论坛式布局，支持全文搜索、状态筛选和深浅主题。
+- ✨ [反馈中心](https://api.oscarstudio.cn/feedback)改用论坛式布局，支持全文搜索、状态筛选和深浅主题，可从主站顶部导航打开。
 
 ## [2026-11-16](/changelog/2026-11-16)
 
