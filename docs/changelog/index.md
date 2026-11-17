@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-16">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-17">查看最新</Link>
 </div>
+
+## [2026-11-17](/changelog/2026-11-17)
+
+- ✨ [反馈中心](https://api.oscarstudio.cn/feedback)改用论坛式布局，支持全文搜索、状态筛选和深浅主题。
 
 ## [2026-11-16](/changelog/2026-11-16)
 
