@@ -21,6 +21,7 @@ import Link from '@docusaurus/Link';
 - ✨ [反馈中心](https://api.oscarstudio.cn/feedback)改用论坛式布局，支持全文搜索、状态筛选和深浅主题，可从主站顶部导航打开。
 - ⚡ 登录下拉菜单改为跟随系统深浅色的卡片式布局，未设置头像时使用纯蓝色占位头像。
 - ⚡ [首页](/main-station/home-theme)工具箱改为跟随子站配置自动更新，补上「掷硬币模拟」，五子棋说明同步为最新文案。
+- ✨ [摘词本](https://edu.oscarstudio.cn/%E6%91%98%E8%AF%8D%E6%9C%AC/)换成宽屏工作台，录入、词表与背诵复习同屏可见，新增学习统计并适配深浅主题与移动端。
 
 ## [2026-11-16](/changelog/2026-11-16)
 
