@@ -15,22 +15,15 @@ import PillButton from '@site/src/components/PillButton';
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1.5rem 0", flexWrap: "wrap"}}>
   <PillButton href="https://edu.oscarstudio.cn/摘词本/" variant="primary">Try it →</PillButton>
-  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/摘词本">View source</PillButton>
+  <PillButton href="https://github.com/Oscar-Studio/teaching-tools/tree/main/legacy-tools/摘词本">View source</PillButton>
 </div>
-
-## 四大功能
-
-- **✏️ 录入** — 输入英文 + 中文释义，一键加入云端词本
-- **📖 总览** — 按状态（未学习 / 学习中 / 已掌握）和排序（新→旧 / 旧→新 / 字母）筛选
-- **🎯 背诵** — 看中文写英文，答对后从 Again/Hard/Good/Easy 4 档评级，FSRS 据此推算下次复习时间
-- **🧠 复习** — 智能列出「到期的」单词，答错则重置次数并立即拉回 24 小时后再考
 
 ## 使用步骤
 
-1. 登录后进入主菜单，点击 **录入** 添加单词
-2. 在 **总览** 中可按状态 / 字母 / 时间排序浏览
-3. 每日打开 **背诵** 完成设置数量的生词（默认 10 个，可在 ⚙ 设置中修改 1-50）
-4. 隔天打开 **复习**，系统自动列出到期需要复习的旧词
+1. 登录后打开摘词本，点击 **录入词条**，填入英文单词、短语或词块及中文释义。添加例句时，可以选中实际文本作为挖空内容，并填写整句翻译。
+2. 在 **我的词库** 搜索英文或中文释义，按学习状态筛选，或按时间和字母排序。每条记录旁可打开例句编辑和删除操作。
+3. 在 **今日学习** 选择 **到期复习** 或 **背诵新词**。每次练习只看一道题。新词默认每组 10 条，可在 **学习设置** 中调整为 1 到 50 条。
+4. 输入英文并检查答案，再按记忆情况评级。「自适应」模式下，答错自动记为「忘记」。例句题接受词条原形和挖空的词形，可查看首字母提示。保存失败时，可在当前题点 **重试保存**。
 
 ## FSRS 自适应调度
 
@@ -39,14 +32,14 @@ import PillButton from '@site/src/components/PillButton';
 - **稳定性 S（stability）** — 这个词你能记多久（天数）
 - **难度 D（difficulty）** — 这个词对你有多难（0~10）
 
-每次复习后 FSRS 会根据你的评级（Again/Hard/Good/Easy）更新 S 和 D，并按目标可提取性（默认 90%）反推下次该什么时候复习。
+每次复习后 FSRS 会根据你的评级（Again/Hard/Good/Easy）更新 S 和 D，并按目标记忆保持率（默认 90%）反推下次该什么时候复习。
 
-| 评级 | 含义 | 对稳定性的影响 |
-|---|---|---|
-| Again (1) | 完全忘了 | 大幅缩短，下次很快再考 |
-| Hard (2) | 答对但很勉强 | 微缩短 |
-| Good (3) | 正常答对 | 按公式推算 |
-| Easy (4) | 答对且轻松 | 大幅拉长 |
+| 评级 | 含义 |
+|---|---|
+| Again (1) | 完全忘了 |
+| Hard (2) | 答对但很勉强 |
+| Good (3) | 正常答对 |
+| Easy (4) | 答对且轻松 |
 
 **「已掌握」判定**：当一个词的状态进入 `Review` 且稳定性 S ≥ 365 天（≈ 1 年长期记忆）时自动标记为 `mastered`，不再加入复习队列。简单词可能 5 次掌握，困难词可能要 10+ 次——这正是自适应相对固定间隔的核心优势。
 
@@ -54,7 +47,7 @@ import PillButton from '@site/src/components/PillButton';
 
 - **后端 API** — `https://api.oscarstudio.cn/api/wordbook`（CRUD + Bearer 鉴权）
 - **复习调度** — 前端按 `next_review` 时间戳与当前时间比较，过期即入队
-- **本地存储** — `localStorage.wordbook_settings` 保存每日背诵数量
+- **本地存储** — `localStorage.wordbook_settings` 保存每组新词数量、目标记忆保持率与评级方式
 - **数据字段** — `word` / `translation` / `status` / `review_count` / `last_review` / `next_review` / `difficulty` / `stability` / `fsrs_state` / `lapses`
 
 ## 适用场景
