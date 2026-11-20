@@ -13,8 +13,13 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-18">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-20">查看最新</Link>
 </div>
+
+## [2026-11-20](/changelog/2026-11-20)
+
+- 🗑 下线 HTML-PPT，[主站](https://oscarstudio.cn/)快捷入口与项目区改为四个项目，工具目录不再收录演示文稿条目。
+- 🔗 旧地址 ppt.oscarstudio.cn 永久跳转到[主站](https://oscarstudio.cn/)。
 
 ## [2026-11-18](/changelog/2026-11-18)
 
