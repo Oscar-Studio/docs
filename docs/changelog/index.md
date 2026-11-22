@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-20">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-22">查看最新</Link>
 </div>
+
+## [2026-11-22](/changelog/2026-11-22)
+
+- ✨ [摘词本](/teaching-tools/摘词本)新增批量导入，支持 CSV / JSON 并可直接下载模板，自动跳过重复和缺少释义的条目。
 
 ## [2026-11-20](/changelog/2026-11-20)
 
