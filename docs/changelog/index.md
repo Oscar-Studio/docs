@@ -19,6 +19,7 @@ import Link from '@docusaurus/Link';
 ## [2026-11-25](/changelog/2026-11-25)
 
 - ✨ [军棋](/games/军棋)上线布阵暗棋与翻棋，可挑战电脑或邀请好友，支持重连和逐手复盘。
+- ✨ [AI Studio](https://ai.oscarstudio.cn/)新增腾讯 Hy4-Flash 模型（支持图片输入），单价见[模型价格](/ai/model-pricing)。
 
 ## [2026-11-22](/changelog/2026-11-22)
 

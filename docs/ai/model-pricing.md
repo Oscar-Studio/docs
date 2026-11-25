@@ -48,6 +48,7 @@ description: AI Studio 对话模型的官方定价、缓存费用、输入模态
 | [GLM-5.3](https://openrouter.ai/z-ai/glm-5.3) | 0.084 | 3.60 | 0.079 | 2.10 | 文本 |
 | [Hy3](https://openrouter.ai/tencent/hy3) | 0.132 | 0.528 | 0.033 | — | 文本 |
 | [Hy4](https://openrouter.ai/tencent/hy4) | 0.417 | 1.2505 | 0.021 | — | 文本、图片 |
+| [Hy4 Flash](https://openrouter.ai/tencent/hy4-flash) | 0.035 | 0.1405 | 0.0015 | — | 文本、图片 |
 | [Grok 4.3](https://openrouter.ai/x-ai/grok-4.3) | 1.25 | 2.50 | 0.20 | — | 文本、图片、文件 |
 | [Kimi K2.7 Code](https://openrouter.ai/moonshotai/kimi-k2.7-code) | 0.60 | 3.50 | 0.16 | — | 文本、图片 |
 | [Kimi K2.6](https://openrouter.ai/moonshotai/kimi-k2.6) | 0.65 | 3.41 | 0.15 | — | 文本、图片 |
