@@ -18,7 +18,7 @@ import Link from '@docusaurus/Link';
 
 ## [2026-11-26](/changelog/2026-11-26)
 
-- ✨ [摘词本](/teaching-tools/摘词本)新增魔法笔按钮，可用 AI 生成英文例句和整句翻译。
+- ✨ [摘词本](/teaching-tools/摘词本)新增魔法笔按钮，可用 AI 生成英文例句和整句翻译，并更新浅色与深色界面配色。
 
 ## [2026-11-25](/changelog/2026-11-25)
 
