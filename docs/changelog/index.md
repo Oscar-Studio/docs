@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-25">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-26">查看最新</Link>
 </div>
+
+## [2026-11-26](/changelog/2026-11-26)
+
+- ✨ [摘词本](/teaching-tools/摘词本)新增魔法笔按钮，可用 AI 生成英文例句和整句翻译。
 
 ## [2026-11-25](/changelog/2026-11-25)
 
