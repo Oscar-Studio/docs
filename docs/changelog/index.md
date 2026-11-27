@@ -13,8 +13,12 @@ import Link from '@docusaurus/Link';
 按发布日期倒序记录所有可感知的产品变更。点击日期查看当天完整记录。
 
 <div style={{display: "flex", gap: "0.5rem", margin: "1rem 0 2rem", flexWrap: "wrap"}}>
-  <Link className="button button--primary button--lg" to="/changelog/2026-11-26">查看最新</Link>
+  <Link className="button button--primary button--lg" to="/changelog/2026-11-27">查看最新</Link>
 </div>
+
+## [2026-11-27](/changelog/2026-11-27)
+
+- 🐛 修复[摘词本](/teaching-tools/摘词本)当天到期的词条有时未进入复习队列的问题。
 
 ## [2026-11-26](/changelog/2026-11-26)
 

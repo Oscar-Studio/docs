@@ -46,7 +46,7 @@ import PillButton from '@site/src/components/PillButton';
 ## 技术实现
 
 - **后端 API** — `https://api.oscarstudio.cn/api/wordbook`（CRUD + Bearer 鉴权）
-- **复习调度** — 前端按 `next_review` 时间戳与当前时间比较，过期即入队
+- **复习调度** — 前端按 `next_review` 在本地时区对应的日期筛选，今天或更早到期的词条加入复习队列
 - **本地存储** — `localStorage.wordbook_settings` 保存每组新词数量、目标记忆保持率与评级方式
 - **数据字段** — `word` / `translation` / `status` / `review_count` / `last_review` / `next_review` / `difficulty` / `stability` / `fsrs_state` / `lapses`
 
